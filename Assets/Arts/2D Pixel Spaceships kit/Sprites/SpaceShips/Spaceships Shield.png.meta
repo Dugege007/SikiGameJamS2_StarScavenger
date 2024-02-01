@@ -1,0 +1,1703 @@
+fileFormatVersion: 2
+guid: 4826b9cc5044eb84780357fd7074229e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1187726480845458544
+    second: Spaceships Shield_0
+  - first:
+      213: -3123229970438374371
+    second: Spaceships Shield_1
+  - first:
+      213: 7316560417390522201
+    second: Spaceships Shield_2
+  - first:
+      213: -11856974560446887
+    second: Spaceships Shield_3
+  - first:
+      213: 8329804424961570686
+    second: Spaceships Shield_4
+  - first:
+      213: -8396913885866575513
+    second: Spaceships Shield_5
+  - first:
+      213: 6562763886137810150
+    second: Spaceships Shield_6
+  - first:
+      213: 7526780883967780500
+    second: Spaceships Shield_7
+  - first:
+      213: -823780122783726590
+    second: Spaceships Shield_8
+  - first:
+      213: 5438697770617602863
+    second: Spaceships Shield_9
+  - first:
+      213: -4036368034801275572
+    second: Spaceships Shield_10
+  - first:
+      213: -3796279478269242158
+    second: Spaceships Shield_11
+  - first:
+      213: -1831778305551763905
+    second: Spaceships Shield_12
+  - first:
+      213: -4966310045557335478
+    second: Spaceships Shield_13
+  - first:
+      213: -7463950729368328512
+    second: Spaceships Shield_14
+  - first:
+      213: 4308335072756618845
+    second: Spaceships Shield_15
+  - first:
+      213: -2124723918186944396
+    second: Spaceships Shield_16
+  - first:
+      213: 2083761158599736770
+    second: Spaceships Shield_17
+  - first:
+      213: -5784472122070303050
+    second: Spaceships Shield_18
+  - first:
+      213: 4186622820919612968
+    second: Spaceships Shield_19
+  - first:
+      213: -6845722607291938316
+    second: Spaceships Shield_20
+  - first:
+      213: 6918318254901115852
+    second: Spaceships Shield_21
+  - first:
+      213: -235955439870601002
+    second: Spaceships Shield_22
+  - first:
+      213: 6395499285817957695
+    second: Spaceships Shield_23
+  - first:
+      213: -1177086181124388376
+    second: Spaceships Shield_24
+  - first:
+      213: 5457967199393045462
+    second: Spaceships Shield_25
+  - first:
+      213: 1099052301304885030
+    second: Spaceships Shield_26
+  - first:
+      213: -4301286603828865918
+    second: Spaceships Shield_27
+  - first:
+      213: 2558536627850447388
+    second: Spaceships Shield_28
+  - first:
+      213: 7099056529187348034
+    second: Spaceships Shield_29
+  - first:
+      213: 2360545741886403614
+    second: Spaceships Shield_30
+  - first:
+      213: -5598262958181372649
+    second: Spaceships Shield_31
+  - first:
+      213: 7527595951238155926
+    second: Spaceships Shield_32
+  - first:
+      213: -1911413884348286244
+    second: Spaceships Shield_33
+  - first:
+      213: 7961595118344800155
+    second: Spaceships Shield_34
+  - first:
+      213: -3641068602375251400
+    second: Spaceships Shield_35
+  - first:
+      213: 3313842346838662718
+    second: Spaceships Shield_36
+  - first:
+      213: 7561713379288222365
+    second: Spaceships Shield_37
+  - first:
+      213: 3632251700023141585
+    second: Spaceships Shield_38
+  - first:
+      213: -55437864230808241
+    second: Spaceships Shield_39
+  - first:
+      213: -2477067290471706106
+    second: Spaceships Shield_40
+  - first:
+      213: -498154724130807359
+    second: Spaceships Shield_41
+  - first:
+      213: 6453848862480836279
+    second: Spaceships Shield_42
+  - first:
+      213: -6674084600474911263
+    second: Spaceships Shield_43
+  - first:
+      213: -7746078143044935803
+    second: Spaceships Shield_44
+  - first:
+      213: 7821469995447450690
+    second: Spaceships Shield_45
+  - first:
+      213: 8322033082547638497
+    second: Spaceships Shield_46
+  - first:
+      213: 2993179749303700359
+    second: Spaceships Shield_47
+  - first:
+      213: -8162255829114133043
+    second: Spaceships Shield_48
+  - first:
+      213: 2582985021731508826
+    second: Spaceships Shield_49
+  - first:
+      213: 2193941812845736129
+    second: Spaceships Shield_50
+  - first:
+      213: -6673782034833028253
+    second: Spaceships Shield_51
+  - first:
+      213: 6771773660965485120
+    second: Spaceships Shield_52
+  - first:
+      213: -2426121698067498421
+    second: Spaceships Shield_53
+  - first:
+      213: -5866890478459580494
+    second: Spaceships Shield_54
+  - first:
+      213: 3823349993829128542
+    second: Spaceships Shield_55
+  - first:
+      213: -8791870679026516405
+    second: Spaceships Shield_56
+  - first:
+      213: -6930584509542614134
+    second: Spaceships Shield_57
+  - first:
+      213: 384806963471952301
+    second: Spaceships Shield_58
+  - first:
+      213: -7839699575997796585
+    second: Spaceships Shield_59
+  - first:
+      213: 3047072601546969338
+    second: Spaceships Shield_60
+  - first:
+      213: -674367977590552634
+    second: Spaceships Shield_61
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spaceships Shield_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 296
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093b1eafe09548fe0800000000000000
+      internalID: -1187726480845458544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 296
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1cba24b3ee08a4d0800000000000000
+      internalID: -3123229970438374371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 294
+        width: 35
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95fee305fe4a98560800000000000000
+      internalID: 7316560417390522201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_3
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 292
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956b63bf420e5dff0800000000000000
+      internalID: -11856974560446887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_4
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 297
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e77bf46cdf8699370800000000000000
+      internalID: 8329804424961570686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_5
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 292
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769b06f3f4b287b80800000000000000
+      internalID: -8396913885866575513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_6
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 294
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec9102cbfe931b50800000000000000
+      internalID: 6562763886137810150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_7
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 261
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496a91bd55f747860800000000000000
+      internalID: 7526780883967780500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 264
+        width: 25
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 204c278c7585194f0800000000000000
+      internalID: -823780122783726590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_9
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 263
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f230f529ec22a7b40800000000000000
+      internalID: 5438697770617602863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_10
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 269
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4dadee68a0fbf7c0800000000000000
+      internalID: -4036368034801275572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_11
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 266
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d418a59de7e05bc0800000000000000
+      internalID: -3796279478269242158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_12
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 265
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f36f15616573496e0800000000000000
+      internalID: -1831778305551763905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_13
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 264
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ad912835f141bb0800000000000000
+      internalID: -4966310045557335478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_14
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 232
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c6abfa7b58ba6890800000000000000
+      internalID: -7463950729368328512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 232
+        width: 40
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56d3011ce74acb30800000000000000
+      internalID: 4308335072756618845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_16
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 234
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478e0ba8ad67382e0800000000000000
+      internalID: -2124723918186944396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_17
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 229
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cdf717cbb10bec10800000000000000
+      internalID: 2083761158599736770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_18
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 231
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be79de904d69bfa0800000000000000
+      internalID: -5784472122070303050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_19
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 197
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8261571264fd91a30800000000000000
+      internalID: 4186622820919612968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_20
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 201
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f9c0811f8b1ff0a0800000000000000
+      internalID: -6845722607291938316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_21
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 196
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb3b7a4ccdc20060800000000000000
+      internalID: 6918318254901115852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_22
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 196
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d811bf07c7b9bcf0800000000000000
+      internalID: -235955439870601002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_23
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 197
+        width: 50
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d917437b061c850800000000000000
+      internalID: 6395499285817957695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 166
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e94f00da562aafe0800000000000000
+      internalID: -1177086181124388376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_25
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 163
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db5e8310489ebb40800000000000000
+      internalID: 5457967199393045462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_26
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 170
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f6ad8be3e904f00800000000000000
+      internalID: 1099052301304885030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_27
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 170
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28452ad7f92ce44c0800000000000000
+      internalID: -4301286603828865918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_28
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 164
+        width: 59
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a0adfd18fb18320800000000000000
+      internalID: 2558536627850447388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_29
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 165
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24e11a60d4ae48260800000000000000
+      internalID: 7099056529187348034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_30
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 131
+        width: 39
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14333578d752c020800000000000000
+      internalID: 2360545741886403614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_31
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 135
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d2f5a1089fe42b0800000000000000
+      internalID: -5598262958181372649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_32
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 135
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e083e72a4677860800000000000000
+      internalID: 7527595951238155926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_33
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 135
+        width: 25
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdabba4033b4975e0800000000000000
+      internalID: -1911413884348286244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_34
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 133
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b970d6ae3944d7e60800000000000000
+      internalID: 7961595118344800155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_35
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 137
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a5898b563587dc0800000000000000
+      internalID: -3641068602375251400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_36
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 105
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3e17f49e022dfd20800000000000000
+      internalID: 3313842346838662718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_37
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 106
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9a0bc9314a90f860800000000000000
+      internalID: 7561713379288222365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_38
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 103
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d420ba3da9586230800000000000000
+      internalID: 3632251700023141585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_39
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 106
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f459a636e8b0b3ff0800000000000000
+      internalID: -55437864230808241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_40
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 105
+        width: 29
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602d1b26c60bf9dd0800000000000000
+      internalID: -2477067290471706106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_41
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 105
+        width: 25
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c12001fae23619f0800000000000000
+      internalID: -498154724130807359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_42
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 104
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b6aa32b85da09950800000000000000
+      internalID: 6453848862480836279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_43
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 72
+        width: 25
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1edb9cbaa63e063a0800000000000000
+      internalID: -6674084600474911263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_44
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 71
+        width: 36
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f936928f6608490800000000000000
+      internalID: -7746078143044935803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_45
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 67
+        width: 41
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24c750c55817b8c60800000000000000
+      internalID: 7821469995447450690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_46
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 70
+        width: 37
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e01d4e1ffccd7370800000000000000
+      internalID: 8322033082547638497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_47
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 75
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78bc32a9f19e98920800000000000000
+      internalID: 2993179749303700359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_48
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 41
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc56ac3a197d9be80800000000000000
+      internalID: -8162255829114133043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_49
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 39
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a521678213b98d320800000000000000
+      internalID: 2582985021731508826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_50
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 41
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0fb8c6472727e10800000000000000
+      internalID: 2193941812845736129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_51
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 41
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36bc4693996f163a0800000000000000
+      internalID: -6673782034833028253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_52
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 39
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ab139244c2afd50800000000000000
+      internalID: 6771773660965485120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_53
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 39
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ab1d47b2fa45ed0800000000000000
+      internalID: -2426121698067498421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_54
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 40
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bf8b47a13e949ea0800000000000000
+      internalID: -5866890478459580494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_55
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 9
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e595d2aff844f0530800000000000000
+      internalID: 3823349993829128542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_56
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 7
+        width: 31
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4eb371e2300df580800000000000000
+      internalID: -8791870679026516405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_57
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 7
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b33eebb1e91df90800000000000000
+      internalID: -6930584509542614134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_58
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 6
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da9a7dcf4eb175500800000000000000
+      internalID: 384806963471952301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_59
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 7
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71feedaa5cac33390800000000000000
+      internalID: -7839699575997796585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_60
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 9
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af058041360694a20800000000000000
+      internalID: 3047072601546969338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceships Shield_61
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 8
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c701d7b5e924a6f0800000000000000
+      internalID: -674367977590552634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Spaceships Shield_0: -1187726480845458544
+      Spaceships Shield_1: -3123229970438374371
+      Spaceships Shield_10: -4036368034801275572
+      Spaceships Shield_11: -3796279478269242158
+      Spaceships Shield_12: -1831778305551763905
+      Spaceships Shield_13: -4966310045557335478
+      Spaceships Shield_14: -7463950729368328512
+      Spaceships Shield_15: 4308335072756618845
+      Spaceships Shield_16: -2124723918186944396
+      Spaceships Shield_17: 2083761158599736770
+      Spaceships Shield_18: -5784472122070303050
+      Spaceships Shield_19: 4186622820919612968
+      Spaceships Shield_2: 7316560417390522201
+      Spaceships Shield_20: -6845722607291938316
+      Spaceships Shield_21: 6918318254901115852
+      Spaceships Shield_22: -235955439870601002
+      Spaceships Shield_23: 6395499285817957695
+      Spaceships Shield_24: -1177086181124388376
+      Spaceships Shield_25: 5457967199393045462
+      Spaceships Shield_26: 1099052301304885030
+      Spaceships Shield_27: -4301286603828865918
+      Spaceships Shield_28: 2558536627850447388
+      Spaceships Shield_29: 7099056529187348034
+      Spaceships Shield_3: -11856974560446887
+      Spaceships Shield_30: 2360545741886403614
+      Spaceships Shield_31: -5598262958181372649
+      Spaceships Shield_32: 7527595951238155926
+      Spaceships Shield_33: -1911413884348286244
+      Spaceships Shield_34: 7961595118344800155
+      Spaceships Shield_35: -3641068602375251400
+      Spaceships Shield_36: 3313842346838662718
+      Spaceships Shield_37: 7561713379288222365
+      Spaceships Shield_38: 3632251700023141585
+      Spaceships Shield_39: -55437864230808241
+      Spaceships Shield_4: 8329804424961570686
+      Spaceships Shield_40: -2477067290471706106
+      Spaceships Shield_41: -498154724130807359
+      Spaceships Shield_42: 6453848862480836279
+      Spaceships Shield_43: -6674084600474911263
+      Spaceships Shield_44: -7746078143044935803
+      Spaceships Shield_45: 7821469995447450690
+      Spaceships Shield_46: 8322033082547638497
+      Spaceships Shield_47: 2993179749303700359
+      Spaceships Shield_48: -8162255829114133043
+      Spaceships Shield_49: 2582985021731508826
+      Spaceships Shield_5: -8396913885866575513
+      Spaceships Shield_50: 2193941812845736129
+      Spaceships Shield_51: -6673782034833028253
+      Spaceships Shield_52: 6771773660965485120
+      Spaceships Shield_53: -2426121698067498421
+      Spaceships Shield_54: -5866890478459580494
+      Spaceships Shield_55: 3823349993829128542
+      Spaceships Shield_56: -8791870679026516405
+      Spaceships Shield_57: -6930584509542614134
+      Spaceships Shield_58: 384806963471952301
+      Spaceships Shield_59: -7839699575997796585
+      Spaceships Shield_6: 6562763886137810150
+      Spaceships Shield_60: 3047072601546969338
+      Spaceships Shield_61: -674367977590552634
+      Spaceships Shield_7: 7526780883967780500
+      Spaceships Shield_8: -823780122783726590
+      Spaceships Shield_9: 5438697770617602863
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
