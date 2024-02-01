@@ -5,9 +5,16 @@ namespace StarScavenger
 {
     public partial class PlayerSpaceShip : ViewController
     {
+        public static PlayerSpaceShip Default;
+
         public float MoveSpeed = 1f;
         public float Acceleration = 0.5f;
-        public float RotateSpeed = 0.1f;
+        public float RotateSpeed = 0.2f;
+
+        private void Awake()
+        {
+            Default = this;
+        }
 
         private void Start()
         {
@@ -42,6 +49,11 @@ namespace StarScavenger
             }
 
             SelfRigidbody2D.velocity = transform.up * MoveSpeed;
+        }
+
+        private void OnDestroy()
+        {
+            Default = null;
         }
     }
 }

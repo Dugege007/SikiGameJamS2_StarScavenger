@@ -20,11 +20,10 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: PlayerSpaceShip
+    ClassName: Camera
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class PlayerSpaceShip : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class Camera : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:5f486876-8a2d-41dc-bcb6-bd097b3fa1ef\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class PlayerSpaceShip\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.Rigidbody2D SelfRigidbody2D;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:364e6cfd-b5bc-43ad-b221-b3c2324d9e83\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class Camera\r\n\t{\r\n\r\n\t}\r\n}\r\n"
