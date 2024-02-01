@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 4538373000263440252}
   - component: {fileID: 6682212240277908426}
   - component: {fileID: 990939337123440160}
-  - component: {fileID: 12489613088416900}
   m_Layer: 0
   m_Name: Asteroid_Small_Brown_0
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,15 +160,3 @@ ConstantForce2D:
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: 0, y: 0}
   m_Torque: 0.001
---- !u!114 &12489613088416900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2579506238522831627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e732ad96034aca54fb31499d802ca9fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

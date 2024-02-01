@@ -8,8 +8,8 @@ namespace StarScavenger
     {
         public List<Asteroid> Asteroids = new List<Asteroid>();
 
-        public float MaxJunkGTime = 5f;
-        public float MinJunkGTime = 2f;
+        public float MaxJunkGTime = 3f;
+        public float MinJunkGTime = 1f;
 
         private float mNextGtime;
         private float mCurrentGTime = 0;

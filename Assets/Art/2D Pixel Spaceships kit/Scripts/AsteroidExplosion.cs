@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using QFramework;
+using StarScavenger;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,18 +7,33 @@ public class AsteroidExplosion : MonoBehaviour
 {
     public GameObject ParticleController;
     public List<GameObject> AsteroidPrefabs;
+    private HitHurtBox mHitHurtBox;
 
-    // Create 3 random small asteroids and destroy big one
-    void OnCollisionEnter2D(Collision2D collision)
+    private void Awake()
     {
-        // Wakeup particle controller
-        if (ParticleController != null) {ParticleController.SetActive(true);}
+        mHitHurtBox = GetComponentInChildren<HitHurtBox>();
+    }
 
-        for (int i = 0; i <= 2; i++)
+    private void Start()
+    {
+        // Create 3 random small asteroids and destroy big one
+        mHitHurtBox.OnCollisionEnter2DEvent(collision =>
         {
-            int z = Random.Range(0,6);
-            Instantiate(AsteroidPrefabs[z], transform.position + AsteroidPrefabs[z].transform.position, Quaternion.identity);
-        }
-        Destroy(gameObject);
+            // Wakeup particle controller
+            if (ParticleController != null) { ParticleController.SetActive(true); }
+
+            for (int i = 0; i <= 2; i++)
+            {
+                int z = Random.Range(0, 6);
+                AsteroidPrefabs[z].InstantiateWithParent(transform.parent)
+                    .Position(transform.position + AsteroidPrefabs[z].transform.position)
+                    .Rotation(Quaternion.identity)
+                    .Show()
+                    .DestroySelfAfterDelayGracefully(1f);
+            }
+
+            Destroy(gameObject);
+
+        }).UnRegisterWhenGameObjectDestroyed(gameObject);
     }
 }

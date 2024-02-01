@@ -12,7 +12,9 @@ namespace StarScavenger
         // 数据
         public static BindableProperty<int> HP = new(3);
         public static BindableProperty<int> MaxHP = new(3);
-        public static BindableProperty<float> Fuel = new(100f);
+        public static BindableProperty<int> Fuel = new(100);
+        public static BindableProperty<int> MaxFuel = new(100);
+        public static BindableProperty<int> FuelConsumptionSpeed = new(1);
 
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
@@ -24,7 +26,8 @@ namespace StarScavenger
         public static void ResetData()
         {
             HP.Value = MaxHP.Value;
-            Fuel.Value = 100f;
+            Fuel.Value = MaxFuel.Value;
+            FuelConsumptionSpeed.Value = 1;
         }
     }
 }
