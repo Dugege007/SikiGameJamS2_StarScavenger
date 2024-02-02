@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace StarScavenger
 {
-	public partial class Camera
+	public partial class CameraController
 	{
 
 	}

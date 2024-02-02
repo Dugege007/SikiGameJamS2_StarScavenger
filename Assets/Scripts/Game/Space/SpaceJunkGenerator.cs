@@ -42,7 +42,7 @@ namespace StarScavenger
                     // 弧度
                     float radian = randomAngle * Mathf.Deg2Rad;
 
-                    Vector3 cameraPos = Camera.Default.transform.position;
+                    Vector3 cameraPos = CameraController.Default.transform.position;
                     float randomRadius = Random.Range(MinJunkGRadius, MaxJunkGRadius);
                     // 使用极坐标确定点的位置
                     Vector3 pos = new Vector3(

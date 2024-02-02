@@ -19,19 +19,26 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: UnityEngine.CircleCollider2D
-      PathToRoot: HitHurtBox
-      MemberName: HitHurtBox
-    - TypeName: CircleCollider2D
-      PathToRoot: GravityArea
-      MemberName: GravityArea
-    ScriptsFolder: Assets/Scripts/Game/Space/Planet
-    ClassName: Planet
+    - TypeName: StarScavenger.HitHurtBox
+      PathToRoot: HurtBox
+      MemberName: HurtBox
+    - TypeName: UnityEngine.LineRenderer
+      PathToRoot: LineRenderer1
+      MemberName: LineRenderer1
+    - TypeName: UnityEngine.LineRenderer
+      PathToRoot: LineRenderer2
+      MemberName: LineRenderer2
+    - TypeName: Rigidbody2D
+      PathToRoot: Projectile
+      MemberName: Projectile
+    ScriptsFolder: Assets/Scripts/Game/Character
+    ClassName: Player
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class Planet : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class Player : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:ee0e6800-d9f5-402d-a974-4ee621ccbf61\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class Planet\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.CircleCollider2D HitHurtBox;\r\n\r\n\t\tpublic CircleCollider2D
-      GravityArea;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:a9b4f3d9-686d-49db-b11a-950ef1f44d73\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class Player\r\n\t{\r\n\r\n\t\tpublic
+      StarScavenger.HitHurtBox HurtBox;\r\n\r\n\t\tpublic UnityEngine.LineRenderer
+      LineRenderer1;\r\n\r\n\t\tpublic UnityEngine.LineRenderer LineRenderer2;\r\n\r\n\t\tpublic
+      Rigidbody2D Projectile;\r\n\r\n\t\tpublic UnityEngine.Rigidbody2D SelfRigidbody2D;\r\n\r\n\t}\r\n}\r\n"

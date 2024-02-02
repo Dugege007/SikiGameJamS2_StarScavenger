@@ -21,6 +21,8 @@ namespace StarScavenger
         public static BindableProperty<float> RotateSpeed = new(0.5f);
         public static BindableProperty<int> FuelConsumption = new(1);
 
+        public static BindableProperty<float> ProjectileSpeed = new(10f);
+
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
         {
@@ -32,7 +34,12 @@ namespace StarScavenger
         {
             HP.Value = MaxHP.Value;
             Fuel.Value = MaxFuel.Value;
+            MoveSpeed.Value = 1f;
+            PropulsiveForceValue.Value = 1f;
+            Acceleration.Value = 0.5f;
+            RotateSpeed.Value = 0.5f;
             FuelConsumption.Value = 1;
+            ProjectileSpeed.Value = 10f;
         }
     }
 }

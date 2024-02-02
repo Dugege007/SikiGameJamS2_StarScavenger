@@ -27,6 +27,7 @@ namespace StarScavenger
         {
             LineRenderer1.positionCount = pathResolution;
             LineRenderer2.positionCount = pathResolution;
+            Projectile.Hide();
 
             mCurrentMoveSpeed = Global.MoveSpeed.Value;
             SelfRigidbody2D.velocity = Vector3.up * mCurrentMoveSpeed;
@@ -64,6 +65,18 @@ namespace StarScavenger
         private void Update()
         {
             mCurrentCTime += Time.deltaTime;
+
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Projectile.InstantiateWithParent(this)
+                    .Self(self =>
+                    {
+                        Vector2 dir = (mousePos - self.transform.position).normalized;
+                        self.gameObject.transform.up = dir;
+                    })
+                    .Show();
+            }
         }
 
         private void FixedUpdate()
@@ -90,7 +103,6 @@ namespace StarScavenger
                 transform.Rotate(0, 0, -horizontal * Global.RotateSpeed.Value);
                 // 调整速度方向
                 SelfRigidbody2D.velocity = transform.up * mCurrentMoveSpeed;
-                //mHorizontalForce = horizontal * transform.right * Global.PropulsiveForceValue.Value;
                 // 消耗燃料
                 ConsumptionFuel(0.5f, Global.FuelConsumption.Value);
             }
@@ -146,7 +158,7 @@ namespace StarScavenger
                 // 施加重力力量到玩家上
                 SelfRigidbody2D.AddForce(mGravity * SelfRigidbody2D.mass);
                 // 如果当前没有在转向
-                if(mIsTurning == false)
+                if (mIsTurning == false)
                 {
                     // 计算第一个预测点的位置来调整朝向
                     Vector2 firstPredictedPosition = NextPos(transform.position, SelfRigidbody2D.velocity, planet);

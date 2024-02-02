@@ -3,9 +3,9 @@ using QFramework;
 
 namespace StarScavenger
 {
-    public partial class Camera : ViewController
+    public partial class CameraController : ViewController
     {
-        public static Camera Default;
+        public static CameraController Default;
 
         private Vector2 mTargetPosition = Vector2.zero;
 
