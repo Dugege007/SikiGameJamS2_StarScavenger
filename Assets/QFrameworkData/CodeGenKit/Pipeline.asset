@@ -19,11 +19,11 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos: []
-    ScriptsFolder: Assets/Scripts/Game
-    ClassName: GameStartController
+    ScriptsFolder: Assets/Scripts/Game/Space/Planet
+    ClassName: Planet
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class GameStartController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class Planet : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:9ec5353d-f01f-435c-9804-ca9fbdb88151\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class GameStartController\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:d2718b80-1b13-43ab-8a16-b0fde38ea5fd\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class Planet\r\n\t{\r\n\r\n\t}\r\n}\r\n"
