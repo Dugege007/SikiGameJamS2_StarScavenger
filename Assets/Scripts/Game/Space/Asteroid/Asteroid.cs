@@ -35,7 +35,7 @@ namespace StarScavenger
             Player player = Player.Default;
             if (player != null)
             {
-                if (Vector2.Distance(player.transform.position, transform.position) <= 18f)
+                if (Vector2.Distance(player.transform.position, transform.position) <= 21f)
                 {
                     mCurrentETime = 0;
                     return;

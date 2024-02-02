@@ -13,10 +13,6 @@ namespace StarScavenger
 
         private Vector2 mGravity = Vector2.zero;
         private Vector2 mPropulsiveForce = Vector2.zero;
-        //private Vector2 mHorizontalForce = Vector2.zero;
-
-        public int pathResolution = 50; // 路径解析度，即路径上的点数
-        public float pathPredictTime = 5f; // 预测路径的时间长度
 
         private void Awake()
         {
@@ -25,8 +21,8 @@ namespace StarScavenger
 
         private void Start()
         {
-            LineRenderer1.positionCount = pathResolution;
-            LineRenderer2.positionCount = pathResolution;
+            LineRenderer1.positionCount = Global.PathResolution.Value;
+            LineRenderer2.positionCount = Global.PathResolution.Value;
             Projectile.Hide();
 
             mCurrentMoveSpeed = Global.MoveSpeed.Value;
@@ -41,21 +37,8 @@ namespace StarScavenger
                     if (hitBox.Owner.CompareTag("Asteroid"))
                     {
                         Global.HP.Value--;
-                        if (Global.HP.Value <= 0)
-                        {
-                            //TODO 播放死亡音效
-                            // 销毁自身
-                            this.DestroyGameObjGracefully();
-
-                            // 游戏结束
-                            UIKit.OpenPanel<GameOverPanel>();
-                            // 切换音乐
-                        }
-                        else
-                        {
-                            //TODO 播放受伤音效
-
-                        }
+                        Debug.Log("CurrentHP: " + Global.HP.Value);
+                        //TODO 播放受伤音效
                     }
                 }
 
@@ -80,6 +63,14 @@ namespace StarScavenger
                         self.GetComponent<ProjectileController>().Owner = this.gameObject;
                     })
                     .Show();
+            }
+
+            if (Global.HP.Value <= 0)
+            {
+                //TODO 爆炸特效
+                //TODO 失败音效
+                gameObject.DestroySelfGracefully();
+                UIKit.OpenPanel<GameOverPanel>();
             }
         }
 
@@ -199,9 +190,9 @@ namespace StarScavenger
 
         private void UpdatePathRK4(Planet planet, Vector2 currentPos, Vector2 currentVelocity)
         {
-            float deltaTime = pathPredictTime / pathResolution;
+            float deltaTime = Global.PathPredictTime.Value / Global.PathResolution.Value;
 
-            for (int i = 0; i < pathResolution; i++)
+            for (int i = 0; i < Global.PathResolution.Value; i++)
             {
                 // RK4方法的四个步骤
                 Vector2 k1_vel = currentVelocity;
@@ -231,7 +222,7 @@ namespace StarScavenger
 
         private Vector2 NextPos(Vector2 currentPos, Vector2 currentVelocity, Planet planet)
         {
-            float deltaTime = pathPredictTime / pathResolution;
+            float deltaTime = Global.PathPredictTime.Value / Global.PathResolution.Value;
             Vector2 acceleration = CalculateAcceleration(currentPos, planet);
             // 使用简化的方法来获取第一个预测点的位置，基于当前速度和加速度
             Vector2 firstPredictedPos = currentPos + currentVelocity * deltaTime + 0.5f * acceleration * Mathf.Pow(deltaTime, 2);
@@ -241,10 +232,10 @@ namespace StarScavenger
         private void UpdatePath(Planet planet, Vector2 currentPos, Vector2 currentVelocity, Vector2 currentAcceleration)
         {
             Vector2 predictedPos;
-            float t = pathPredictTime / pathResolution; // 每一步的时间间隔
+            float t = Global.PathPredictTime.Value / Global.PathResolution.Value; // 每一步的时间间隔
 
             // 设置LineRenderer的点
-            for (int i = 0; i < pathResolution; i++)
+            for (int i = 0; i < Global.PathResolution.Value; i++)
             {
                 // 更新位置：S = S0 + U*t + 0.5*a*t^2
                 predictedPos = currentPos + currentVelocity * t + 0.5f * Mathf.Pow(t, 2) * currentAcceleration;

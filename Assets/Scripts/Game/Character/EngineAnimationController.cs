@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace StarScavenger
 {
-    public class EngineAnimationPreset : MonoBehaviour
+    public class EngineAnimationController : MonoBehaviour
     {
         public Animator[] Engine;
 
@@ -18,7 +18,7 @@ namespace StarScavenger
 
             for (int i = 0; i < Engine.Length; i++)
             {
-                Engine[i].SetInteger("ColorPreset", Preset);
+                Engine[i].CrossFade("Engine_1_Small", 0.1f);
             }
         }
     }

@@ -31,15 +31,22 @@ namespace StarScavenger
             {
                 if (hitHurtBox.Owner.CompareTag("Asteroid"))
                 {
-                    Animator = gameObject.GetComponent<Animator>();
+                    Animator = gameObject.GetComponentInChildren<Animator>();
                     Animator.SetTrigger("Hit");
+                    Global.Coin.Value++;
+
                     Destroy(gameObject, ExplosionClip.length);
                 }
 
                 if (hitHurtBox.Owner.CompareTag("Player"))
                 {
-                    Animator = gameObject.GetComponent<Animator>();
+                    Animator = gameObject.GetComponentInChildren<Animator>();
                     Animator.SetTrigger("Hit");
+                    if (Global.Shield.Value>0)
+                        Global.Shield.Value--;
+                    else
+                        Global.HP.Value--;
+
                     Destroy(gameObject, ExplosionClip.length);
                 }
             }

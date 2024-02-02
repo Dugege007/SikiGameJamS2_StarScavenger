@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using System.Collections.Generic;
 
 namespace StarScavenger
 {
@@ -14,11 +15,71 @@ namespace StarScavenger
             mData = uiData as GamePanelData ?? new GamePanelData();
             // please add init code here
 
+            HeartRed.Hide();
+            HeartGreen.Hide();
+
+            int lastHP = Global.HP.Value;
+            int lastShield = Global.Shield.Value;
+
+            GenerateHPAndShield(HeartRed.gameObject, HPHolder, Global.HP.Value);
+
+            if (Global.Shield.Value > 0)
+                GenerateHPAndShield(HeartGreen.gameObject, ShieldHolder, Global.Shield.Value);
+
+            Global.HP.RegisterWithInitValue(hp =>
+            {
+                if (hp - lastHP > 0)
+                    GenerateHPAndShield(HeartRed.gameObject, HPHolder, hp - lastHP);
+                else if (hp - lastHP < 0)
+                    RemoveHPAndShield(HPHolder, -(hp - lastHP));
+                lastHP = hp;
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            Global.Shield.RegisterWithInitValue(shield =>
+            {
+                if (shield - lastShield > 0)
+                    GenerateHPAndShield(HeartGreen.gameObject, ShieldHolder, shield - lastShield);
+                else if (shield - lastShield < 0)
+                    RemoveHPAndShield(ShieldHolder, -(shield - lastShield));
+                lastShield = shield;
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
             Global.Fuel.RegisterWithInitValue(fuel =>
             {
                 FuelText.text = "È¼ÁÏ£º" + fuel + "/" + Global.MaxFuel;
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            // ²âÊÔ
+            BtnAddHP.onClick.AddListener(() =>
+            {
+                Global.HP.Value++;
+            });
+            BtnRemoveHP.onClick.AddListener(() =>
+            {
+                Global.HP.Value--;
+            });
+        }
+
+        private void GenerateHPAndShield(GameObject needG, Transform parent, int needNum)
+        {
+            for (int i = 0; i < needNum; i++)
+            {
+                needG.InstantiateWithParent(parent)
+                    .SiblingIndex(0)
+                    .Show();
+            }
+        }
+
+        private void RemoveHPAndShield(Transform parent, int needNum)
+        {
+            for (int i = 0; i < needNum; i++)
+            {
+                if (parent.childCount <= 1) return;
+                parent.GetChild(0).gameObject.DestroySelfGracefully();
+            }
         }
 
         protected override void OnOpen(IUIData uiData = null)

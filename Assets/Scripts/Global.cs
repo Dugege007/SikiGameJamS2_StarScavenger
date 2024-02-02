@@ -1,5 +1,6 @@
 ﻿using QFramework;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace StarScavenger
 {
@@ -11,18 +12,26 @@ namespace StarScavenger
 
         // 基本数据
         public static BindableProperty<int> HP = new(3);
-        public static BindableProperty<int> MaxHP = new(3);
-        public static BindableProperty<int> Fuel = new(100);
-        public static BindableProperty<int> MaxFuel = new(100);
+        public static BindableProperty<int> Shield = new(1);
+        public static BindableProperty<int> Fuel = new(200);
+        public static BindableProperty<int> MaxFuel = new(200);
         public static BindableProperty<int> FuelConsumption = new(1);
         public static BindableProperty<int> Coin = new(0);
+
         // 运动数据
         public static BindableProperty<float> MoveSpeed = new(1f);
         public static BindableProperty<float> Acceleration = new(0.5f);
         public static BindableProperty<float> PropulsiveForceValue = new(1f);
         public static BindableProperty<float> RotateSpeed = new(0.5f);
+
         // 武器数据
         public static BindableProperty<float> ProjectileSpeed = new(10f);
+
+        // 能力数据
+        // 预测路径点数
+        public static BindableProperty<int> PathResolution = new(20);
+        // 预测路径时间长度
+        public static BindableProperty<float> PathPredictTime = new(2f);
 
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
@@ -33,7 +42,8 @@ namespace StarScavenger
 
         public static void ResetData()
         {
-            HP.Value = MaxHP.Value;
+            HP.Value = 3;
+            Shield.Value = 1;
             Fuel.Value = MaxFuel.Value;
             FuelConsumption.Value = 1;
             Coin.Value = 0;
@@ -44,6 +54,9 @@ namespace StarScavenger
             RotateSpeed.Value = 0.5f;
 
             ProjectileSpeed.Value = 10f;
+
+            PathResolution.Value = 20;
+            PathPredictTime.Value = 2f;
         }
     }
 }
