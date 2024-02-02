@@ -9,9 +9,11 @@ namespace StarScavenger
 
         private float mCurrentCTime = 0;
         private float mCurrentMoveSpeed;
+        private bool mIsTurning = false;
 
         private Vector2 mGravity = Vector2.zero;
         private Vector2 mPropulsiveForce = Vector2.zero;
+        //private Vector2 mHorizontalForce = Vector2.zero;
 
         public int pathResolution = 50; // 路径解析度，即路径上的点数
         public float pathPredictTime = 5f; // 预测路径的时间长度
@@ -66,7 +68,6 @@ namespace StarScavenger
 
         private void FixedUpdate()
         {
-
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
@@ -85,23 +86,29 @@ namespace StarScavenger
             // 转向
             if (horizontal != 0)
             {
+                mIsTurning = true;
                 transform.Rotate(0, 0, -horizontal * Global.RotateSpeed.Value);
                 // 调整速度方向
                 SelfRigidbody2D.velocity = transform.up * mCurrentMoveSpeed;
+                //mHorizontalForce = horizontal * transform.right * Global.PropulsiveForceValue.Value;
                 // 消耗燃料
                 ConsumptionFuel(0.5f, Global.FuelConsumption.Value);
+            }
+            else
+            {
+                mIsTurning = false;
             }
 
             // 移动
             if (vertical > 0)
             {
-                mPropulsiveForce = transform.up.ToVector2() * Global.PropulsiveForceValue.Value;
+                mPropulsiveForce = transform.up * Global.PropulsiveForceValue.Value;
                 // 消耗燃料
                 ConsumptionFuel(0.1f, Global.FuelConsumption.Value);
             }
             else if (vertical < 0)
             {
-                mPropulsiveForce = -transform.up.ToVector2() * Global.PropulsiveForceValue.Value;
+                mPropulsiveForce = -transform.up * Global.PropulsiveForceValue.Value;
                 // 消耗燃料
                 ConsumptionFuel(0.1f, Global.FuelConsumption.Value);
             }
@@ -110,9 +117,7 @@ namespace StarScavenger
                 mPropulsiveForce = Vector2.zero;
             }
 
-            Vector2 resulForces = mPropulsiveForce // 推进力
-                + mGravity; // 重力
-
+            Vector2 resulForces = mPropulsiveForce + mGravity;
             SelfRigidbody2D.AddForce(resulForces, ForceMode2D.Force);
         }
 
@@ -140,16 +145,20 @@ namespace StarScavenger
                 mGravity = gravityDirection.normalized * planet.Gravity / Mathf.Pow(gravityDirection.magnitude, 2);
                 // 施加重力力量到玩家上
                 SelfRigidbody2D.AddForce(mGravity * SelfRigidbody2D.mass);
-                // 计算第一个预测点的位置来调整朝向
-                Vector2 firstPredictedPosition = NextPos(transform.position, SelfRigidbody2D.velocity, planet);
-                Vector2 directionToLook = firstPredictedPosition - (Vector2)transform.position;
-                float angle = Mathf.Atan2(directionToLook.y, directionToLook.x) * Mathf.Rad2Deg - 90;
-                transform.rotation = Quaternion.Euler(0, 0, angle);
+                // 如果当前没有在转向
+                if(mIsTurning == false)
+                {
+                    // 计算第一个预测点的位置来调整朝向
+                    Vector2 firstPredictedPosition = NextPos(transform.position, SelfRigidbody2D.velocity, planet);
+                    Vector2 directionToLook = firstPredictedPosition - (Vector2)transform.position;
+                    float angle = Mathf.Atan2(directionToLook.y, directionToLook.x) * Mathf.Rad2Deg - 90;
+                    transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, angle, 1f));
+                }
 
                 // 使用RK4方法更新预测路径
                 UpdatePathRK4(planet, transform.position, SelfRigidbody2D.velocity);
 
-                Debug.Log("重力方向：" + gravityDirection.normalized + "\n" + "重力大小：" + mGravity);
+                //Debug.Log("重力方向：" + gravityDirection.normalized + "\n" + "重力大小：" + mGravity);
             }
             else
             {
@@ -161,15 +170,13 @@ namespace StarScavenger
         {
             // 到星球中心的距离
             Vector2 gravityDirection = (Vector2)planet.transform.position - position;
-            float distanceSquared = gravityDirection.sqrMagnitude; // 使用sqrMagnitude避免平方根计算
             // 星球表面重力加速度
             float gravityAtSurface = planet.Gravity;
             // 星球半径的平方
             float planetRadiusSquared = Mathf.Pow(planet.Radius, 2);
 
             // 计算加速度
-            Vector2 acceleration = gravityDirection.normalized * (gravityAtSurface * planetRadiusSquared / distanceSquared);
-            // 直接使用sqrMagnitude计算距离的平方，避免再次计算平方
+            Vector2 acceleration = gravityDirection.normalized * (gravityAtSurface * planetRadiusSquared / gravityDirection.sqrMagnitude);
 
             return acceleration;
         }

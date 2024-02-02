@@ -25,7 +25,7 @@ namespace StarScavenger
             {
                 mTargetPosition = Player.Default.transform.position;
 
-                transform.position = new Vector3(mTargetPosition.x, mTargetPosition.y, transform.position.z);
+                transform.position = new Vector3(mTargetPosition.x, mTargetPosition.y, transform.position.z) + Player.Default.transform.up * 3f;
                 transform.rotation = Player.Default.transform.rotation;
             }
         }

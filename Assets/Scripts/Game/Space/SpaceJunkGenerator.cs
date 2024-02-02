@@ -14,7 +14,7 @@ namespace StarScavenger
         private float mNextGtime;
         private float mCurrentGTime = 0;
 
-        public float MinJunkGRadius = 18f;
+        public float MinJunkGRadius = 21f;
         public float MaxJunkGRadius = 25f;
 
         private void Start()

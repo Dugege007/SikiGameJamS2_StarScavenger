@@ -922,7 +922,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -947,7 +947,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -967,7 +967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Namespace: StarScavenger
   ScriptName: Camera
-  ScriptsFolder: Assets/Scripts/Game
+  ScriptsFolder: Assets\Scripts\Game\Camera
   GeneratePrefab: 0
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
@@ -1149,8 +1149,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1019769213}
-  - {fileID: 2026692397}
   - {fileID: 1913922558}
+  - {fileID: 2026692397}
   - {fileID: 2117256411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   - {fileID: 981751142086256142}
   MaxJunkGTime: 3
   MinJunkGTime: 1
-  MinJunkGRadius: 18
+  MinJunkGRadius: 21
   MaxJunkGRadius: 25
 --- !u!1 &1913922557
 GameObject:
@@ -2332,7 +2332,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
