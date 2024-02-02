@@ -1,10 +1,14 @@
-// Generate Id:d2718b80-1b13-43ab-8a16-b0fde38ea5fd
+// Generate Id:ee0e6800-d9f5-402d-a974-4ee621ccbf61
 using UnityEngine;
 
 namespace StarScavenger
 {
 	public partial class Planet
 	{
+
+		public UnityEngine.CircleCollider2D HitHurtBox;
+
+		public CircleCollider2D GravityArea;
 
 	}
 }

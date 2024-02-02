@@ -1,4 +1,4 @@
-// Generate Id:8bc24400-8d16-4096-86d1-a10bd76a1067
+// Generate Id:3374579a-04a6-471f-9704-28682a079db4
 using UnityEngine;
 
 namespace StarScavenger
@@ -7,6 +7,10 @@ namespace StarScavenger
 	{
 
 		public StarScavenger.HitHurtBox HurtBox;
+
+		public UnityEngine.LineRenderer LineRenderer1;
+
+		public UnityEngine.LineRenderer LineRenderer2;
 
 		public UnityEngine.Rigidbody2D SelfRigidbody2D;
 
