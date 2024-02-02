@@ -69,11 +69,15 @@ namespace StarScavenger
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (Input.GetMouseButtonDown(0))
             {
-                Projectile.InstantiateWithParent(this)
+                Global.Fuel.Value--;
+
+                Projectile.Instantiate()
+                    .Position(transform.position + transform.up * 0.5f)
                     .Self(self =>
                     {
                         Vector2 dir = (mousePos - self.transform.position).normalized;
                         self.gameObject.transform.up = dir;
+                        self.GetComponent<ProjectileController>().Owner = this.gameObject;
                     })
                     .Show();
             }

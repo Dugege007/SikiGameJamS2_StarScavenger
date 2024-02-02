@@ -4,9 +4,10 @@ namespace StarScavenger
 {
     public class ProjectileController : MonoBehaviour
     {
+        public GameObject Owner;
         public float disappearTime = 5f;
         public AnimationClip ExplosionClip;
-        private Animator m_Animator;
+        public Animator Animator;
         private Rigidbody2D m_Rigidbody2D;
 
         void Start()
@@ -19,17 +20,28 @@ namespace StarScavenger
 
         private void FixedUpdate()
         {
-            m_Rigidbody2D.velocity = transform.up *  Global.ProjectileSpeed.Value;
+            m_Rigidbody2D.velocity = transform.up * Global.ProjectileSpeed.Value;
         }
 
         // Play explosion animation and destoy projectile
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.GetComponentInParent<Asteroid>())
+            HitHurtBox hitHurtBox = collision.gameObject.GetComponentInChildren<HitHurtBox>();
+            if (hitHurtBox != null)
             {
-                m_Animator = gameObject.GetComponent<Animator>();
-                m_Animator.SetTrigger("Hit");
-                Destroy(gameObject, ExplosionClip.length);
+                if (hitHurtBox.Owner.CompareTag("Asteroid"))
+                {
+                    Animator = gameObject.GetComponent<Animator>();
+                    Animator.SetTrigger("Hit");
+                    Destroy(gameObject, ExplosionClip.length);
+                }
+
+                if (hitHurtBox.Owner.CompareTag("Player"))
+                {
+                    Animator = gameObject.GetComponent<Animator>();
+                    Animator.SetTrigger("Hit");
+                    Destroy(gameObject, ExplosionClip.length);
+                }
             }
         }
     }

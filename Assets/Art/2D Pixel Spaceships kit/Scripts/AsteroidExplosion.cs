@@ -1,39 +1,41 @@
 ﻿using QFramework;
-using StarScavenger;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidExplosion : MonoBehaviour
+namespace StarScavenger
 {
-    public GameObject ParticleController;
-    public List<GameObject> AsteroidPrefabs;
-    private HitHurtBox mHitHurtBox;
-
-    private void Awake()
+    public class AsteroidExplosion : MonoBehaviour
     {
-        mHitHurtBox = GetComponentInChildren<HitHurtBox>();
-    }
+        public GameObject ParticleController;
+        public List<GameObject> AsteroidPrefabs;
+        private HitHurtBox mHitHurtBox;
 
-    private void Start()
-    {
-        // Create 3 random small asteroids and destroy big one
-        mHitHurtBox.OnCollisionEnter2DEvent(collision =>
+        private void Awake()
         {
-            // Wakeup particle controller
-            if (ParticleController != null) { ParticleController.SetActive(true); }
+            mHitHurtBox = GetComponentInChildren<HitHurtBox>();
+        }
 
-            for (int i = 0; i <= 2; i++)
+        private void Start()
+        {
+            // Create 3 random small asteroids and destroy big one
+            mHitHurtBox.OnCollisionEnter2DEvent(collision =>
             {
-                int z = Random.Range(0, 6);
-                AsteroidPrefabs[z].InstantiateWithParent(transform.parent)
-                    .Position(transform.position + AsteroidPrefabs[z].transform.position)
-                    .Rotation(Quaternion.identity)
-                    .Show()
-                    .DestroySelfAfterDelayGracefully(1f);
-            }
+                // Wakeup particle controller
+                if (ParticleController != null) { ParticleController.SetActive(true); }
 
-            Destroy(gameObject);
+                for (int i = 0; i <= 2; i++)
+                {
+                    int z = Random.Range(0, 6);
+                    AsteroidPrefabs[z].InstantiateWithParent(transform.parent)
+                        .Position(transform.position + AsteroidPrefabs[z].transform.position)
+                        .Rotation(Quaternion.identity)
+                        .Show()
+                        .DestroySelfAfterDelayGracefully(1f);
+                }
 
-        }).UnRegisterWhenGameObjectDestroyed(gameObject);
+                gameObject.DestroySelfGracefully();
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+        }
     }
 }

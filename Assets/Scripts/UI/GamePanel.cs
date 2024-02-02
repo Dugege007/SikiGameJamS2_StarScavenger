@@ -14,15 +14,9 @@ namespace StarScavenger
             mData = uiData as GamePanelData ?? new GamePanelData();
             // please add init code here
 
-            Global.HP.RegisterWithInitValue(hp =>
-            {
-                HPText.text = hp + "/" + Global.MaxHP;
-
-            }).UnRegisterWhenGameObjectDestroyed(gameObject);
-
             Global.Fuel.RegisterWithInitValue(fuel =>
             {
-                FuelText.text = fuel + "/" + Global.MaxFuel;
+                FuelText.text = "»º¡œ£∫" + fuel + "/" + Global.MaxFuel;
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
