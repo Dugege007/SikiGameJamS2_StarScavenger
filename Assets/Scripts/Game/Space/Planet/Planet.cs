@@ -1,10 +1,26 @@
 using UnityEngine;
 using QFramework;
+using UnityEngine.UI;
 
 namespace StarScavenger
 {
+    public enum PlanetType
+    {
+        Ice,
+        Ocean,
+        Ring,
+        Forest,
+        Earth,
+        Tech,
+        Sun,
+    }
+
     public partial class Planet : ViewController
     {
+        public bool IsDiscover = false;
+        public bool IsArrived = false;
+        public PlanetType Type;
+        public bool IsRotate = true;
         public float MinRotationSpeed = 0.1f;
         public float MaxRotationSpeed = 1f;
         // 星球表面的重力加速度
@@ -19,6 +35,62 @@ namespace StarScavenger
             mRandomRotationSpeed = Random.Range(MinRotationSpeed, MaxRotationSpeed);
 
             // 重力影响区域
+            GravityArea.OnTriggerEnter2DEvent(collider2D =>
+            {
+                HitHurtBox hitHurtBox = collider2D.GetComponent<HitHurtBox>();
+                if (hitHurtBox != null)
+                {
+                    Player player = Player.Default;
+                    if (hitHurtBox.Owner.CompareTag("Player"))
+                    {
+                        Text title = GamePanel.Default.SceneTitleText;
+                        Text description = GamePanel.Default.SmallTitleText;
+
+                        switch (Type)
+                        {
+                            case PlanetType.Ice:
+                                title.text = "冰星";
+                                break;
+                            case PlanetType.Ocean:
+                                title.text = "海星";
+                                break;
+                            case PlanetType.Ring:
+                                title.text = "环星";
+                                break;
+                            case PlanetType.Forest:
+                                title.text = "绿星";
+                                break;
+                            case PlanetType.Earth:
+                                title.text = "蓝星";
+                                break;
+                            case PlanetType.Tech:
+                                title.text = "红星";
+                                break;
+                            case PlanetType.Sun:
+                                title.text = "恒星";
+                                break;
+                            default:
+                                break;
+                        }
+
+                        description.text = "接近中";
+
+                        title.Show()
+                            .Delay(3f, () =>
+                            {
+                                title.Hide();
+                            }).Execute();
+
+                        description.Show()
+                            .Delay(3f, () =>
+                            {
+                                description.Hide();
+                            }).Execute();
+                    }
+                }
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
             GravityArea.OnTriggerStay2DEvent(collider2D =>
             {
                 HitHurtBox hitHurtBox = collider2D.GetComponent<HitHurtBox>();
@@ -28,7 +100,6 @@ namespace StarScavenger
                     if (hitHurtBox.Owner.CompareTag("Player"))
                     {
                         player.GravityEffect(this);
-                        //TODO 提示进入新区域
                     }
                 }
 
@@ -131,7 +202,10 @@ namespace StarScavenger
 
         private void Update()
         {
-            transform.Rotate(0, 0, mRandomRotationSpeed);
+            if (IsRotate)
+            {
+                transform.Rotate(0, 0, mRandomRotationSpeed);
+            }
         }
     }
 }

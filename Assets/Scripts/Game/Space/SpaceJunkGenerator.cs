@@ -1,6 +1,7 @@
 using UnityEngine;
 using QFramework;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace StarScavenger
 {
@@ -8,8 +9,8 @@ namespace StarScavenger
     {
         public List<Asteroid> Asteroids = new List<Asteroid>();
 
-        public float MaxJunkGTime = 3f;
-        public float MinJunkGTime = 1f;
+        private float mMaxJunkGTime;
+        private float mMinJunkGTime;
 
         private float mNextGtime;
         private float mCurrentGTime = 0;
@@ -22,7 +23,31 @@ namespace StarScavenger
             foreach (var asteroid in Asteroids)
                 asteroid.Hide();
 
-            mNextGtime = Random.Range(MinJunkGTime, MaxJunkGTime);
+            mMaxJunkGTime = Global.MaxGATime.Value;
+            mMinJunkGTime = Global.MinGATime.Value;
+            mNextGtime = Random.Range(mMinJunkGTime, mMaxJunkGTime);
+
+            // 玩家进入小行星带
+            AsteroidArea1.OnTriggerEnter2DEvent(collider2D =>
+            {
+                SetEnterAsteroidAreaCollider(collider2D);
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            AsteroidArea2.OnTriggerEnter2DEvent(collider2D =>
+            {
+                SetEnterAsteroidAreaCollider(collider2D);
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            // 玩家离开小行星带
+            AsteroidArea1.OnTriggerEnter2DEvent(collider2D =>
+            {
+                SetEnterAsteroidAreaCollider(collider2D);
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            AsteroidArea2.OnTriggerEnter2DEvent(collider2D =>
+            {
+                SetEnterAsteroidAreaCollider(collider2D);
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
         private void Update()
@@ -32,7 +57,7 @@ namespace StarScavenger
             if (mCurrentGTime > mNextGtime)
             {
                 mCurrentGTime = 0;
-                mNextGtime = Random.Range(MinJunkGTime, MaxJunkGTime);
+                mNextGtime = Random.Range(mMinJunkGTime, mMaxJunkGTime);
 
                 Player player = Player.Default;
                 if (player != null)
@@ -67,6 +92,50 @@ namespace StarScavenger
                     Asteroids[randomIndex].gameObject.InstantiateWithParent(this)
                         .Position(pos)
                         .Show();
+                }
+            }
+        }
+
+        private void SetEnterAsteroidAreaCollider(Collider2D collider2D)
+        {
+            HitHurtBox hitHurtBox = collider2D.GetComponentInChildren<HitHurtBox>();
+
+            if (hitHurtBox != null)
+            {
+                if (hitHurtBox.Owner.CompareTag("Player"))
+                {
+                    mMaxJunkGTime *= 0.5f;
+                    mMinJunkGTime *= 0.5f;
+
+                    Text title = GamePanel.Default.SceneTitleText;
+                    Text description = GamePanel.Default.SmallTitleText;
+
+                    title.text = "小行星带";
+                    description.text = "小行星数量增加";
+
+                    title.Show().Delay(3f, () =>
+                    {
+                        title.Hide();
+                    }).Execute();
+
+                    description.Show().Delay(3f, () =>
+                    {
+                        description.Hide();
+                    }).Execute();
+                }
+            }
+        }
+
+        private void SetExitAsteroidAreaCollider(Collider2D collider2D)
+        {
+            HitHurtBox hitHurtBox = collider2D.GetComponentInChildren<HitHurtBox>();
+
+            if (hitHurtBox != null)
+            {
+                if (hitHurtBox.Owner.CompareTag("Player"))
+                {
+                    mMaxJunkGTime = Global.MaxGATime.Value;
+                    mMinJunkGTime = Global.MinGATime.Value;
                 }
             }
         }

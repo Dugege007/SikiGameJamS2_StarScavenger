@@ -19,29 +19,18 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: UnityEngine.CircleCollider2D
-      PathToRoot: HitHurtBox
-      MemberName: HitHurtBox
-    - TypeName: CircleCollider2D
-      PathToRoot: GravityArea
-      MemberName: GravityArea
-    - TypeName: CircleCollider2D
-      PathToRoot: HoldFireArea
-      MemberName: HoldFireArea
-    - TypeName: CircleCollider2D
-      PathToRoot: DefenseArea
-      MemberName: DefenseArea
-    - TypeName: UnityEngine.Transform
-      PathToRoot: DefenseImage
-      MemberName: DefenseImage
-    ScriptsFolder: Assets/Scripts/Game/Space/Planet
-    ClassName: Planet
+    - TypeName: Collider2D
+      PathToRoot: AsteroidArea1
+      MemberName: AsteroidArea1
+    - TypeName: Collider2D
+      PathToRoot: AsteroidArea2
+      MemberName: AsteroidArea2
+    ScriptsFolder: Assets\Scripts\Game\Space
+    ClassName: SpaceJunkGenerator
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class Planet : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class SpaceJunkGenerator : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:95f1723e-5f2f-4f69-9b50-bdeab644dc92\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class Planet\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.CircleCollider2D HitHurtBox;\r\n\r\n\t\tpublic CircleCollider2D
-      GravityArea;\r\n\r\n\t\tpublic CircleCollider2D HoldFireArea;\r\n\r\n\t\tpublic
-      CircleCollider2D DefenseArea;\r\n\r\n\t\tpublic UnityEngine.Transform DefenseImage;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:dab8f2f6-c38f-40c6-a86f-301bf89652a8\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class SpaceJunkGenerator\r\n\t{\r\n\r\n\t\tpublic
+      Collider2D AsteroidArea1;\r\n\r\n\t\tpublic Collider2D AsteroidArea2;\r\n\r\n\t}\r\n}\r\n"

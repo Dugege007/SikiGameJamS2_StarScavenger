@@ -7,6 +7,7 @@ namespace StarScavenger
     {
         public static Player Default;
 
+        public Planet NextTargetPlanet;
         public bool CanAttack = true;
 
         private float mFCTime = 0;

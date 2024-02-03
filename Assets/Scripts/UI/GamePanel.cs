@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using QFramework;
-using System.Collections.Generic;
 
 namespace StarScavenger
 {
@@ -10,15 +8,18 @@ namespace StarScavenger
     }
     public partial class GamePanel : UIPanel
     {
+        public static GamePanel Default;
+
         protected override void OnInit(IUIData uiData = null)
         {
             mData = uiData as GamePanelData ?? new GamePanelData();
             // please add init code here
 
+            Default = this;
+
             // 初始隐藏
             HeartRed.Hide();
             HeartGreen.Hide();
-            SceneTitleText.Hide();
             HPReducingText.Hide();
 
             DpadUp.Hide();
@@ -87,8 +88,10 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            // 全局 Update 监听按键
             ActionKit.OnUpdate.Register(() =>
             {
+                // 移动方向提示
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                     DpadUp.Show();
                 if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -107,8 +110,29 @@ namespace StarScavenger
                 if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
                     DpadRight.Hide();
 
+                // 操作提示开关
+                if (Input.GetKeyDown(KeyCode.H))
+                    ControlTip.Show();
+                if (Input.GetKeyUp(KeyCode.H))
+                    ControlTip.Hide();
+
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            // 延时关闭提示语
+            ActionKit.Delay(5f, () =>
+            {
+                SceneTitleText.text = "流浪者星系";
+                SmallTitleText.text = "开始探索";
+
+                ControlTip.Hide();
+                SceneTitleText.Hide();
+                SmallTitleText.Hide();
+
+            }).Start(this);
+
+
+
+#if UNITY_EDITOR
             // 测试
             BtnAddHP.onClick.AddListener(() =>
             {
@@ -126,6 +150,7 @@ namespace StarScavenger
             {
                 Global.Fuel.Value -= 10;
             });
+#endif
         }
 
         private void GenerateHPAndShield(GameObject needG, Transform parent, int needNum)
@@ -161,6 +186,7 @@ namespace StarScavenger
 
         protected override void OnClose()
         {
+            Default = null;
         }
     }
 }

@@ -38,6 +38,10 @@ namespace StarScavenger
         // 是否即将碰撞
         public static BindableProperty<bool> IsAboutCollide = new(false);
 
+        // 小行星数据
+        public static BindableProperty<float> MaxGATime = new(3f);
+        public static BindableProperty<float> MinGATime = new(1f);
+
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
         {
@@ -67,6 +71,9 @@ namespace StarScavenger
             PathResolution.Value = 20;
             PathPredictTime.Value = 2f;
             IsAboutCollide.Value = false;
+
+            MaxGATime.Value = 3f;
+            MinGATime.Value = 1f;
         }
     }
 }

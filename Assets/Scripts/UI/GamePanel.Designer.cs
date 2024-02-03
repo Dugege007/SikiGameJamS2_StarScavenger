@@ -5,11 +5,13 @@ using QFramework;
 
 namespace StarScavenger
 {
-	// Generate Id:b7d5205f-0c19-44e3-8b1b-b35478c23d02
+	// Generate Id:b72293cc-d5e1-4b0c-8440-00248f4d2130
 	public partial class GamePanel
 	{
 		public const string Name = "GamePanel";
 		
+		[SerializeField]
+		public RectTransform ControlTip;
 		[SerializeField]
 		public UnityEngine.UI.Slider FuelBar;
 		[SerializeField]
@@ -37,6 +39,8 @@ namespace StarScavenger
 		[SerializeField]
 		public UnityEngine.UI.Text SceneTitleText;
 		[SerializeField]
+		public UnityEngine.UI.Text SmallTitleText;
+		[SerializeField]
 		public UnityEngine.UI.Slider SpeedSlider;
 		[SerializeField]
 		public UnityEngine.UI.Text SpeedText;
@@ -53,6 +57,7 @@ namespace StarScavenger
 		
 		protected override void ClearUIComponents()
 		{
+			ControlTip = null;
 			FuelBar = null;
 			FuelText = null;
 			HPHolder = null;
@@ -66,6 +71,7 @@ namespace StarScavenger
 			BtnAddFuel = null;
 			BtnRemoveFuel = null;
 			SceneTitleText = null;
+			SmallTitleText = null;
 			SpeedSlider = null;
 			SpeedText = null;
 			DpadRight = null;
