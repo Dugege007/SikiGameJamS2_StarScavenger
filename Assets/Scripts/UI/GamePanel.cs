@@ -17,6 +17,7 @@ namespace StarScavenger
 
             HeartRed.Hide();
             HeartGreen.Hide();
+            SceneTitleText.Hide();
 
             int lastHP = Global.HP.Value;
             int lastShield = Global.Shield.Value;
@@ -48,7 +49,15 @@ namespace StarScavenger
 
             Global.Fuel.RegisterWithInitValue(fuel =>
             {
-                FuelText.text = "È¼ÁÏ£º" + fuel + "/" + Global.MaxFuel;
+                FuelBar.value = (float)fuel / Global.MaxFuel.Value;
+                FuelText.text = "È¼ÁÏ£º" + fuel + "/" + Global.MaxFuel.Value;
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            Global.CurrentSpeed.RegisterWithInitValue(speed =>
+            {
+                SpeedSlider.value = speed / Global.MaxSpeed.Value;
+                SpeedText.text = speed.ToString("0.0");
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 

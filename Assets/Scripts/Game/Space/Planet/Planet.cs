@@ -20,15 +20,31 @@ namespace StarScavenger
 
             GravityArea.OnTriggerStay2DEvent(collider2D =>
             {
-                if (collider2D.GetComponentInParent<Player>())
-                    Player.Default.GravityEffect(this);
+                HitHurtBox hitHurtBox = collider2D.GetComponent<HitHurtBox>();
+                if (hitHurtBox != null)
+                {
+                    if (hitHurtBox.Owner.CompareTag("Player"))
+                    {
+                        Player.Default.LineRenderer1.Show();
+                        Player.Default.GravityEffect(this);
+                        Player.Default.CanAttack = false;
+                        //TODO 提示进入安全区
+                    }
+                }
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             GravityArea.OnTriggerExit2DEvent(collider2D =>
             {
-                if (collider2D.GetComponentInParent<Player>())
-                    Player.Default.GravityEffect(null);
+                HitHurtBox hitHurtBox = collider2D.GetComponent<HitHurtBox>();
+                if (hitHurtBox != null)
+                {
+                    if (hitHurtBox.Owner.CompareTag("Player"))
+                    {
+                        Player.Default.LineRenderer1.Hide();
+                        Player.Default.GravityEffect(null);
+                    }
+                }
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }

@@ -7,6 +7,8 @@ namespace StarScavenger
     {
         public static Player Default;
 
+        public bool CanAttack = false;
+
         private float mCurrentCTime = 0;
         private float mCurrentMoveSpeed;
         private bool mIsTurning = false;
@@ -49,28 +51,31 @@ namespace StarScavenger
         {
             mCurrentCTime += Time.deltaTime;
 
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Input.GetMouseButtonDown(0))
-            {
-                Global.Fuel.Value--;
-
-                Projectile.Instantiate()
-                    .Position(transform.position + transform.up * 0.5f)
-                    .Self(self =>
-                    {
-                        Vector2 dir = (mousePos - self.transform.position).normalized;
-                        self.gameObject.transform.up = dir;
-                        self.GetComponent<ProjectileController>().Owner = this.gameObject;
-                    })
-                    .Show();
-            }
-
             if (Global.HP.Value <= 0)
             {
                 //TODO 爆炸特效
                 //TODO 失败音效
                 gameObject.DestroySelfGracefully();
                 UIKit.OpenPanel<GameOverPanel>();
+            }
+
+            if (CanAttack)
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Global.Fuel.Value--;
+
+                    Projectile.Instantiate()
+                        .Position(transform.position + transform.up * 0.5f)
+                        .Self(self =>
+                        {
+                            Vector2 dir = (mousePos - self.transform.position).normalized;
+                            self.gameObject.transform.up = dir;
+                            self.GetComponent<ProjectileController>().Owner = this.gameObject;
+                        })
+                        .Show();
+                }
             }
         }
 
@@ -89,7 +94,7 @@ namespace StarScavenger
             }
 
             // 获取速度大小
-            mCurrentMoveSpeed = SelfRigidbody2D.velocity.magnitude;
+            Global.CurrentSpeed.Value = SelfRigidbody2D.velocity.magnitude;
 
             // 转向
             if (horizontal != 0)
@@ -97,7 +102,7 @@ namespace StarScavenger
                 mIsTurning = true;
                 transform.Rotate(0, 0, -horizontal * Global.RotateSpeed.Value);
                 // 调整速度方向
-                SelfRigidbody2D.velocity = transform.up * mCurrentMoveSpeed;
+                SelfRigidbody2D.velocity = transform.up * Global.CurrentSpeed.Value;
                 // 消耗燃料
                 ConsumptionFuel(0.5f, Global.FuelConsumption.Value);
             }
@@ -126,6 +131,8 @@ namespace StarScavenger
 
             Vector2 resulForces = mPropulsiveForce + mGravity;
             SelfRigidbody2D.AddForce(resulForces, ForceMode2D.Force);
+
+
         }
 
         /// <summary>

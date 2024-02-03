@@ -18,27 +18,12 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos:
-    - TypeName: StarScavenger.HitHurtBox
-      PathToRoot: HurtBox
-      MemberName: HurtBox
-    - TypeName: UnityEngine.LineRenderer
-      PathToRoot: LineRenderer1
-      MemberName: LineRenderer1
-    - TypeName: UnityEngine.LineRenderer
-      PathToRoot: LineRenderer2
-      MemberName: LineRenderer2
-    - TypeName: Rigidbody2D
-      PathToRoot: Projectile
-      MemberName: Projectile
-    ScriptsFolder: Assets/Scripts/Game/Character
-    ClassName: Player
+    BindInfos: []
+    ScriptsFolder: Assets/Scripts/Game/FX
+    ClassName: FloatingTextController
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class Player : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class FloatingTextController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:a9b4f3d9-686d-49db-b11a-950ef1f44d73\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class Player\r\n\t{\r\n\r\n\t\tpublic
-      StarScavenger.HitHurtBox HurtBox;\r\n\r\n\t\tpublic UnityEngine.LineRenderer
-      LineRenderer1;\r\n\r\n\t\tpublic UnityEngine.LineRenderer LineRenderer2;\r\n\r\n\t\tpublic
-      Rigidbody2D Projectile;\r\n\r\n\t\tpublic UnityEngine.Rigidbody2D SelfRigidbody2D;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:bad70eb8-66b0-4d20-b31e-9184a73904cc\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class FloatingTextController\r\n\t{\r\n\r\n\t}\r\n}\r\n"
