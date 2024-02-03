@@ -21,6 +21,11 @@ namespace StarScavenger
             SceneTitleText.Hide();
             HPReducingText.Hide();
 
+            DpadUp.Hide();
+            DpadDown.Hide();
+            DpadLeft.Hide();
+            DpadRight.Hide();
+
             // Éú³É HP ºÍ Shield UI
             GenerateHPAndShield(HeartRed.gameObject, HPHolder, Global.HP.Value);
             if (Global.Shield.Value > 0)
@@ -82,6 +87,27 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            ActionKit.OnUpdate.Register(() =>
+            {
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    DpadUp.Show();
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                    DpadDown.Show();
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                    DpadLeft.Show();
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                    DpadRight.Show();
+
+                if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+                    DpadUp.Hide();
+                if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+                    DpadDown.Hide();
+                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+                    DpadLeft.Hide();
+                if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+                    DpadRight.Hide();
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // ²âÊÔ
             BtnAddHP.onClick.AddListener(() =>

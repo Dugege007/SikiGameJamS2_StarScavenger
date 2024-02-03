@@ -18,12 +18,28 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos: []
-    ScriptsFolder: Assets/Scripts/Game/FX
-    ClassName: NavLine
+    BindInfos:
+    - TypeName: StarScavenger.HitHurtBox
+      PathToRoot: HurtBox
+      MemberName: HurtBox
+    - TypeName: UnityEngine.LineRenderer
+      PathToRoot: LineRenderer1
+      MemberName: LineRenderer1
+    - TypeName: UnityEngine.LineRenderer
+      PathToRoot: LineRenderer2
+      MemberName: LineRenderer2
+    - TypeName: StarScavenger.ProjectileController
+      PathToRoot: Projectile
+      MemberName: Projectile
+    ScriptsFolder: Assets/Scripts/Game/Character
+    ClassName: Player
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class NavLine : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class Player : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:04233573-7d0b-4707-93c0-a8eb7d6c36e0\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class NavLine\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:49476812-4aa7-4f9d-b946-970d7cacc7f6\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class Player\r\n\t{\r\n\r\n\t\tpublic
+      StarScavenger.HitHurtBox HurtBox;\r\n\r\n\t\tpublic UnityEngine.LineRenderer
+      LineRenderer1;\r\n\r\n\t\tpublic UnityEngine.LineRenderer LineRenderer2;\r\n\r\n\t\tpublic
+      StarScavenger.ProjectileController Projectile;\r\n\r\n\t\tpublic UnityEngine.Rigidbody2D
+      SelfRigidbody2D;\r\n\r\n\t}\r\n}\r\n"

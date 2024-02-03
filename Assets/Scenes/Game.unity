@@ -947,7 +947,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: -10}
+  m_LocalPosition: {x: 0, y: 4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   HurtBox: {fileID: 1019769215}
   LineRenderer1: {fileID: 1913922559}
   LineRenderer2: {fileID: 2117256412}
-  Projectile: {fileID: 2115457759437201382}
+  Projectile: {fileID: 6438696008972065441}
   SelfRigidbody2D: {fileID: 685078356}
 --- !u!114 &685078355
 MonoBehaviour:
@@ -4279,6 +4279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
+  InitVelocity: {x: 0, y: 0}
   disappearTime: 6
   ExplosionClip: {fileID: 7400000, guid: 28e92089e2118fc439cd23d4f92825a7, type: 2}
   Animator: {fileID: 0}
@@ -4474,7 +4475,7 @@ MonoBehaviour:
   MarkType: 0
   CustomComponentName: Projectile
   CustomComment: 
-  mComponentName: Rigidbody2D
+  mComponentName: StarScavenger.ProjectileController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-// Generate Id:a9b4f3d9-686d-49db-b11a-950ef1f44d73
+// Generate Id:49476812-4aa7-4f9d-b946-970d7cacc7f6
 using UnityEngine;
 
 namespace StarScavenger
@@ -12,7 +12,7 @@ namespace StarScavenger
 
 		public UnityEngine.LineRenderer LineRenderer2;
 
-		public Rigidbody2D Projectile;
+		public StarScavenger.ProjectileController Projectile;
 
 		public UnityEngine.Rigidbody2D SelfRigidbody2D;
 

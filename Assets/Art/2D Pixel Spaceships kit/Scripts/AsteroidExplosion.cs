@@ -30,6 +30,10 @@ namespace StarScavenger
                         .Position(transform.position + AsteroidPrefabs[z].transform.position)
                         .Rotation(Quaternion.identity)
                         .Show()
+                        .Self(self =>
+                        {
+                            self.GetComponent<Rigidbody2D>().AddForce(RandomUtility.Choose(Vector2.up, Vector2.left, Vector2.right, Vector2.down), ForceMode2D.Impulse);
+                        })
                         .DestroySelfAfterDelayGracefully(1f);
                 }
 

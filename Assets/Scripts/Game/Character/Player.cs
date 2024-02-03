@@ -84,6 +84,7 @@ namespace StarScavenger
                 if (mReduceHPTime > 5f)
                 {
                     Global.HP.Value--;
+                    Global.Fuel.Value += 10;
                     mReduceHPTime = 0;
                 }
             }
@@ -102,7 +103,7 @@ namespace StarScavenger
             }
 
             // 常时耗费燃料
-            if (mAutoFCTime > Global.FuelConsumptTime.Value)
+            if (mAutoFCTime > Global.FuelAutoConsumptTime.Value)
             {
                 Global.Fuel.Value--;
                 mAutoFCTime = 0;
@@ -116,12 +117,13 @@ namespace StarScavenger
                     Global.Fuel.Value--;
 
                     Projectile.Instantiate()
-                        .Position(transform.position + transform.up * 0.5f)
+                        .Position(Projectile.transform.position)
                         .Self(self =>
                         {
+                            self.InitVelocity  = SelfRigidbody2D.velocity;
                             Vector2 dir = (mousePos - self.transform.position).normalized;
                             self.gameObject.transform.up = dir;
-                            self.GetComponent<ProjectileController>().Owner = this.gameObject;
+                            self.Owner = this.gameObject;
                         })
                         .Show();
                 }
@@ -135,8 +137,6 @@ namespace StarScavenger
 
             if (Global.Fuel.Value > 0)
             {
-                // 获取速度大小
-                Global.CurrentSpeed.Value = SelfRigidbody2D.velocity.magnitude;
 
                 // 转向
                 if (horizontal != 0)
@@ -175,8 +175,23 @@ namespace StarScavenger
                 Global.Fuel.Value = 0;
             }
 
+            // 获取速度大小
+            Global.CurrentSpeed.Value = SelfRigidbody2D.velocity.magnitude;
+
             Vector2 resulForces = mPropulsiveForce + mGravity;
-            SelfRigidbody2D.AddForce(resulForces, ForceMode2D.Force);
+
+            if (Global.CurrentSpeed.Value > Global.MaxSpeed.Value)
+            {
+                SelfRigidbody2D.AddForce(resulForces * 0.2f, ForceMode2D.Force);
+            }
+            else if (Global.CurrentSpeed.Value > Global.MaxSpeed.Value * 0.5f)
+            {
+                SelfRigidbody2D.AddForce(resulForces * 0.5f, ForceMode2D.Force);
+            }
+            else
+            {
+                SelfRigidbody2D.AddForce(resulForces, ForceMode2D.Force);
+            }
         }
 
         /// <summary>

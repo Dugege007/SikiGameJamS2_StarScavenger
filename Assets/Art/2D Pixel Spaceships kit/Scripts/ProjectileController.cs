@@ -1,25 +1,32 @@
-﻿using UnityEngine;
+﻿using QFramework;
+using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace StarScavenger
 {
     public class ProjectileController : MonoBehaviour
     {
         public GameObject Owner;
+        public Vector2 InitVelocity = Vector2.zero;
         public float disappearTime = 5f;
         public AnimationClip ExplosionClip;
         public Animator Animator;
         private Rigidbody2D m_Rigidbody2D;
+        private Vector2 mMoveDir;
 
         private void Start()
         {
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            mMoveDir = transform.up;
+            m_Rigidbody2D.velocity = transform.up.ToVector2() * Global.ProjectileSpeed.Value + InitVelocity;
 
             Destroy(gameObject, disappearTime);
         }
 
         private void FixedUpdate()
         {
-            m_Rigidbody2D.velocity = transform.up * Global.ProjectileSpeed.Value;
+            m_Rigidbody2D.velocity = mMoveDir * Global.ProjectileSpeed.Value + InitVelocity;
+            transform.up = m_Rigidbody2D.velocity;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
