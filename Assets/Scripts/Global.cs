@@ -16,8 +16,8 @@ namespace StarScavenger
         protected override void Init()
         {
             // 注册模块
-            this.RegisterSystem(new SaveSystem());
-            this.RegisterSystem(new CoinUpgradeSystem());
+            //this.RegisterSystem(new SaveSystem());
+            //this.RegisterSystem(new CoinUpgradeSystem());
         }
 
         // 时间
