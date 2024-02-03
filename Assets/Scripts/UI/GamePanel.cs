@@ -21,11 +21,28 @@ namespace StarScavenger
             HeartRed.Hide();
             HeartGreen.Hide();
             HPReducingText.Hide();
+            ControlTip.Hide();
 
             DpadUp.Hide();
             DpadDown.Hide();
             DpadLeft.Hide();
             DpadRight.Hide();
+
+            DialogText.Hide();
+
+            // 更新当前时间
+            Global.CurrentSeconds.RegisterWithInitValue(currentSeconds =>
+            {
+                // 每 20 帧更新一次
+                if (Time.frameCount % 20 == 0)
+                {
+                    int currentSecondsInt = Mathf.FloorToInt(currentSeconds);
+                    int seconds = currentSecondsInt % 60;
+                    int minutes = currentSecondsInt / 60;
+
+                    TimeText.text = $"{minutes:00}:{seconds:00}";
+                }
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 生成 HP 和 Shield UI
             GenerateHPAndShield(HeartRed.gameObject, HPHolder, Global.HP.Value);
@@ -39,9 +56,16 @@ namespace StarScavenger
             Global.HP.RegisterWithInitValue(hp =>
             {
                 if (hp - lastHP > 0)
+                {
                     GenerateHPAndShield(HeartRed.gameObject, HPHolder, hp - lastHP);
+                    DialogShow("精神焕发！");
+                }
                 else if (hp - lastHP < 0)
+                {
                     RemoveHPAndShield(HPHolder, -(hp - lastHP));
+                    DialogShow("疼！");
+                }
+
                 lastHP = hp;
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
@@ -59,17 +83,48 @@ namespace StarScavenger
             Global.IsReducingHP.RegisterWithInitValue(isReducingHP =>
             {
                 if (isReducingHP)
+                {
                     HPReducingText.Show();
+                    DialogShow("拆了东墙补西墙...");
+                }
                 else
+                {
                     HPReducingText.Hide();
+                }
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 燃料相关
+            int lastFuel = Global.Fuel.Value;
+
             Global.Fuel.RegisterWithInitValue(fuel =>
             {
                 FuelBar.value = (float)fuel / Global.MaxFuel.Value;
                 FuelText.text = "燃料：" + fuel + "/" + Global.MaxFuel.Value;
+
+                if (lastFuel - fuel > 0)
+                {
+                    if (fuel == 10)
+                    {
+                        if (Player.Default.CanAttack)
+                            DialogShow("燃料没了，要完了...");
+                        else
+                            DialogShow("希望就在眼前！");
+                    }
+                    else if (fuel == 50)
+                        DialogShow("注意燃料！");
+                }
+                else if (lastFuel - fuel < 0)
+                {
+                    if (fuel == 10)
+                        DialogShow("还能 再撑一下...");
+                    else if (fuel == 50)
+                        DialogShow("开源节流");
+                    else if(fuel == Global.MaxFuel.Value)
+                        DialogShow("油箱满满的安全感~");
+                }
+
+                lastFuel = fuel;
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
@@ -78,6 +133,11 @@ namespace StarScavenger
             {
                 CoinText.text = coin.ToString();
 
+                if (coin % 20 == 0 && coin > 0)
+                    DialogShow("我爱金币！");
+                if (coin == 66)
+                    DialogShow("六六大顺！");
+
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 运动状态相关
@@ -85,6 +145,12 @@ namespace StarScavenger
             {
                 SpeedSlider.value = speed / Global.MaxSpeed.Value;
                 SpeedText.text = speed.ToString("0.0");
+
+                if (speed == 5)
+                    DialogShow("悠着点，小心小行星！");
+
+                if (speed == 10)
+                    DialogShow("想要超光速吗？");
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
@@ -118,17 +184,15 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-            // 延时关闭提示语
-            ActionKit.Delay(5f, () =>
+            // 提示语
+            SceneTitleText.Show().Delay(3f, () =>
             {
                 SceneTitleText.text = "流浪者星系";
-                SmallTitleText.text = "开始探索";
+            }).Execute();
 
-                ControlTip.Hide();
-                SceneTitleText.Hide();
-                SmallTitleText.Hide();
+            DescriptionShow("开始探索");
 
-            }).Start(this);
+            DialogShow("啊，又一个星系");
 
 #if UNITY_EDITOR
             // 测试
@@ -168,6 +232,23 @@ namespace StarScavenger
                 if (parent.childCount <= 1) return;
                 parent.GetChild(0).gameObject.DestroySelfGracefully();
             }
+        }
+
+        public void DialogShow(string dialog)
+        {
+            DialogText.InstantiateWithParent(DialogHolder.transform)
+                .Self(self => self.text = dialog)
+                .Show()
+                .DestroyGameObjAfterDelayGracefully(3f);
+        }
+
+        public void DescriptionShow(string description)
+        {
+            SmallTitleText.text = description;
+            SmallTitleText.Show().Delay(3f, () =>
+            {
+                SmallTitleText.Hide();
+            }).Execute();
         }
 
         protected override void OnOpen(IUIData uiData = null)

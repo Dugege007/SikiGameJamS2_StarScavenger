@@ -9,6 +9,9 @@ namespace StarScavenger
         {
         }
 
+        // 时间
+        public static BindableProperty<float> CurrentSeconds = new(0);
+
         // 基本数据
         public static BindableProperty<int> HP = new(3);
         public static BindableProperty<bool> IsReducingHP = new(false);
@@ -52,6 +55,8 @@ namespace StarScavenger
 
         public static void ResetData()
         {
+            CurrentSeconds.Value = 0;
+
             HP.Value = 3;
             IsReducingHP.Value = false;
             Shield.Value = 0;

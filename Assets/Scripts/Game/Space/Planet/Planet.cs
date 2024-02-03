@@ -113,6 +113,8 @@ namespace StarScavenger
                     if (hitHurtBox.Owner.CompareTag("Player"))
                     {
                         player.GravityEffect(null);
+
+                        GamePanel.Default.DialogShow("浩瀚的宇宙啊~");
                     }
                 }
 
@@ -131,12 +133,8 @@ namespace StarScavenger
                         player.LineRenderer1.Show();
                         player.CanAttack = false;
                         // 提示
-                        Text description = GamePanel.Default.SmallTitleText;
-                        description.text = "开启路径预测\n请勿撞向星球";
-                        description.Show().Delay(3f, () =>
-                        {
-                            description.Hide();
-                        }).Execute();
+                        GamePanel.Default.DescriptionShow("开启路径预测\n请勿撞向星球");
+                        GamePanel.Default.DialogShow("我看到了！");
 
                         // 关闭生成垃圾
                         Global.CanGenerate.Value = false;
@@ -156,12 +154,8 @@ namespace StarScavenger
                         player.LineRenderer1.Hide();
                         player.CanAttack = true;
 
-                        Text description = GamePanel.Default.SmallTitleText;
-                        description.text = "关闭路径预测\n允许开火";
-                        description.Show().Delay(3f, () =>
-                        {
-                            description.Hide();
-                        }).Execute();
+                        GamePanel.Default.DescriptionShow("关闭路径预测\n允许开火");
+                        GamePanel.Default.DescriptionShow("下个行星在哪？");
 
                         // 关闭生成垃圾
                         Global.CanGenerate.Value = true;
@@ -179,15 +173,7 @@ namespace StarScavenger
                     if (hitHurtBox.Owner.CompareTag("Player"))
                     {
                         // 提示到达该星球
-                        Text description = GamePanel.Default.SmallTitleText;
-                        description.text = "已到达！";
-                        description.Show().Delay(3f, () =>
-                        {
-                            description.Hide();
-                        }).Execute();
-
-                        // 补充燃料
-                        Global.Fuel.Value = Global.MaxFuel.Value;
+                        GamePanel.Default.DescriptionShow("已到达！");
                     }
                 }
 
@@ -207,6 +193,8 @@ namespace StarScavenger
                         if (stayTime > 10f)
                         {
                             //TODO 获得成就
+                            GamePanel.Default.DialogShow("要晕了~");
+                            stayTime = 0;
                         }
                     }
 
@@ -228,12 +216,12 @@ namespace StarScavenger
                         // 短时间离开该星球，提示引力弹弓
                         if (stayTime <= 2f)
                         {
-                            Text description = GamePanel.Default.SmallTitleText;
-                            description.text = "引力弹弓！";
-                            description.Show().Delay(3f, () =>
-                            {
-                                description.Hide();
-                            }).Execute();
+                            GamePanel.Default.DescriptionShow("引力弹弓！");
+                            // 补充燃料
+                            FloatingTextController.Play("燃料+" + (Global.MaxFuel.Value - Global.Fuel.Value), TextType.Fuel);
+                            Global.Fuel.Value = Global.MaxFuel.Value;
+
+                            GamePanel.Default.DialogShow("加速！加速！");
                         }
                     }
                 }

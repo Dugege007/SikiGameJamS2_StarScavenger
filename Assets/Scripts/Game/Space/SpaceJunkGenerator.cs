@@ -124,6 +124,8 @@ namespace StarScavenger
                     {
                         description.Hide();
                     }).Execute();
+
+                    GamePanel.Default.DialogShow("ÈÆµÀ×ß£¿");
                 }
             }
         }
@@ -138,6 +140,8 @@ namespace StarScavenger
                 {
                     mMaxJunkGTime = Global.MaxGATime.Value;
                     mMinJunkGTime = Global.MinGATime.Value;
+
+                    GamePanel.Default.DialogShow("ºô£¬¾ªÏÕ");
                 }
             }
         }
