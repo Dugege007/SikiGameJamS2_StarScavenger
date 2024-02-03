@@ -5,7 +5,7 @@ using QFramework;
 
 namespace StarScavenger
 {
-	// Generate Id:f57a59d2-16a0-4c6a-872b-588efafa39a6
+	// Generate Id:f039b9e0-c3e4-4675-9944-6e5270503bfa
 	public partial class GamePanel
 	{
 		public const string Name = "GamePanel";
@@ -23,11 +23,17 @@ namespace StarScavenger
 		[SerializeField]
 		public UnityEngine.UI.Image HeartGreen;
 		[SerializeField]
+		public UnityEngine.UI.Text HPReducingText;
+		[SerializeField]
 		public UnityEngine.UI.Text CoinText;
 		[SerializeField]
 		public UnityEngine.UI.Button BtnAddHP;
 		[SerializeField]
 		public UnityEngine.UI.Button BtnRemoveHP;
+		[SerializeField]
+		public UnityEngine.UI.Button BtnAddFuel;
+		[SerializeField]
+		public UnityEngine.UI.Button BtnRemoveFuel;
 		[SerializeField]
 		public UnityEngine.UI.Text SceneTitleText;
 		[SerializeField]
@@ -45,9 +51,12 @@ namespace StarScavenger
 			HeartRed = null;
 			ShieldHolder = null;
 			HeartGreen = null;
+			HPReducingText = null;
 			CoinText = null;
 			BtnAddHP = null;
 			BtnRemoveHP = null;
+			BtnAddFuel = null;
+			BtnRemoveFuel = null;
 			SceneTitleText = null;
 			SpeedSlider = null;
 			SpeedText = null;

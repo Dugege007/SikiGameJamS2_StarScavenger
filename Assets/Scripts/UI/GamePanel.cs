@@ -15,17 +15,20 @@ namespace StarScavenger
             mData = uiData as GamePanelData ?? new GamePanelData();
             // please add init code here
 
+            // 初始隐藏
             HeartRed.Hide();
             HeartGreen.Hide();
             SceneTitleText.Hide();
+            HPReducingText.Hide();
 
-            int lastHP = Global.HP.Value;
-            int lastShield = Global.Shield.Value;
-
+            // 生成 HP 和 Shield UI
             GenerateHPAndShield(HeartRed.gameObject, HPHolder, Global.HP.Value);
-
             if (Global.Shield.Value > 0)
                 GenerateHPAndShield(HeartGreen.gameObject, ShieldHolder, Global.Shield.Value);
+
+            // 基础属性相关
+            int lastHP = Global.HP.Value;
+            int lastShield = Global.Shield.Value;
 
             Global.HP.RegisterWithInitValue(hp =>
             {
@@ -47,6 +50,16 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            Global.IsReducingHP.RegisterWithInitValue(isReducingHP =>
+            {
+                if (isReducingHP)
+                    HPReducingText.Show();
+                else
+                    HPReducingText.Hide();
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            // 燃料相关
             Global.Fuel.RegisterWithInitValue(fuel =>
             {
                 FuelBar.value = (float)fuel / Global.MaxFuel.Value;
@@ -54,12 +67,14 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            // 金币相关
             Global.Coin.RegisterWithInitValue(coin =>
             {
                 CoinText.text = coin.ToString();
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            // 运动状态相关
             Global.CurrentSpeed.RegisterWithInitValue(speed =>
             {
                 SpeedSlider.value = speed / Global.MaxSpeed.Value;
@@ -67,14 +82,6 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-            Global.IsReducingHP.RegisterWithInitValue(isReducingHP =>
-            {
-                if (isReducingHP)
-                    HeartRed.GetComponent<Animator>().CrossFade("HeartBlink", 0.1f);
-                else
-                    HeartRed.GetComponent<Animator>().CrossFade("HeartNormal", 0.1f);
-
-            }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 测试
             BtnAddHP.onClick.AddListener(() =>
@@ -84,6 +91,14 @@ namespace StarScavenger
             BtnRemoveHP.onClick.AddListener(() =>
             {
                 Global.HP.Value--;
+            });
+            BtnAddFuel.onClick.AddListener(() =>
+            {
+                Global.Fuel.Value += 10;
+            });
+            BtnRemoveFuel.onClick.AddListener(() =>
+            {
+                Global.Fuel.Value -= 10;
             });
         }
 

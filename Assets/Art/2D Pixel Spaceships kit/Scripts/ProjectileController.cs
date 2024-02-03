@@ -10,11 +10,10 @@ namespace StarScavenger
         public Animator Animator;
         private Rigidbody2D m_Rigidbody2D;
 
-        void Start()
+        private void Start()
         {
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
-            // Destroy object if it didn't hit anything
             Destroy(gameObject, disappearTime);
         }
 
@@ -23,17 +22,29 @@ namespace StarScavenger
             m_Rigidbody2D.velocity = transform.up * Global.ProjectileSpeed.Value;
         }
 
-        // Play explosion animation and destoy projectile
-        void OnCollisionEnter2D(Collision2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             HitHurtBox hitHurtBox = collision.gameObject.GetComponentInChildren<HitHurtBox>();
+
             if (hitHurtBox != null)
             {
                 if (hitHurtBox.Owner.CompareTag("Asteroid"))
                 {
                     Animator = gameObject.GetComponentInChildren<Animator>();
                     Animator.CrossFade("Projectile_3_Explosion", 0.1f);
-                    Global.Coin.Value++;
+
+                    if (hitHurtBox.Owner.GetComponent<Asteroid>().AsteroidType == AsteroidType.Coin)
+                    {
+                        int randomNum = Random.Range(1, 5);
+                        Global.Coin.Value += randomNum;
+                        FloatingTextController.Play("金币+" + randomNum, TextType.Coin);
+                    }
+                    else if (hitHurtBox.Owner.GetComponent<Asteroid>().AsteroidType == AsteroidType.Fuel)
+                    {
+                        int randomNum = Random.Range(2, 8);
+                        Global.Fuel.Value += randomNum;
+                        FloatingTextController.Play("燃料+" + randomNum, TextType.Fuel);
+                    }
 
                     Destroy(gameObject, ExplosionClip.length);
                 }
@@ -42,7 +53,7 @@ namespace StarScavenger
                 {
                     Animator = gameObject.GetComponentInChildren<Animator>();
                     Animator.CrossFade("Projectile_3_Explosion", 0.1f);
-                    if (Global.Shield.Value>0)
+                    if (Global.Shield.Value > 0)
                         Global.Shield.Value--;
                     else
                         Global.HP.Value--;

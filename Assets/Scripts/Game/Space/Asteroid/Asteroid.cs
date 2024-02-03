@@ -14,6 +14,7 @@ namespace StarScavenger
         public float MinMoveSpeed = 0f;
         public float MaxMoveSpeed = 3f;
         private Rigidbody2D rigid2D;
+        public AsteroidType AsteroidType;
 
         public float DefaultExistTime = 5f;
         private float mCurrentETime = 0;

@@ -25,7 +25,7 @@ namespace StarScavenger
         public static BindableProperty<float> PropulsiveForceValue = new(1f);
         public static BindableProperty<float> RotateSpeed = new(0.5f);
         public static BindableProperty<float> CurrentSpeed = new(1f);
-        public static BindableProperty<float> MaxSpeed = new(5f);
+        public static BindableProperty<float> MaxSpeed = new(10f);
 
         // 武器数据
         public static BindableProperty<float> ProjectileSpeed = new(10f);

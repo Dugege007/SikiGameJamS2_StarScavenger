@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7024d91bb0fd284497db247bbab4f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AsteroidType: 1
   ParticleController: {fileID: 5028887675838635420}
   AsteroidPrefabs:
   - {fileID: 707913179266884754, guid: f15c6e9886992194fbbab88cbe11ec69, type: 3}
@@ -164,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinMoveSpeed: 0
   MaxMoveSpeed: 3
+  AsteroidType: 1
   DefaultExistTime: 5
 --- !u!1 &5028887675838635420
 GameObject:

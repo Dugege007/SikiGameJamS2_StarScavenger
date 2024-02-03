@@ -32,8 +32,7 @@ namespace StarScavenger
             LineRenderer1.Hide();
             LineRenderer2.Hide();
 
-            mCurrentMoveSpeed = Global.MoveSpeed.Value;
-            SelfRigidbody2D.velocity = Vector3.up * mCurrentMoveSpeed;
+            SelfRigidbody2D.velocity = Vector3.up * Global.CurrentSpeed.Value;
 
             // ×¢²áÅö×²ÊÂ¼þ
             HurtBox.OnCollisionEnter2DEvent(collider2D =>

@@ -6,7 +6,6 @@ namespace StarScavenger
 {
     public class AsteroidExplosion : MonoBehaviour
     {
-        public AsteroidType AsteroidType;
         public GameObject ParticleController;
         public List<GameObject> AsteroidPrefabs;
         private HitHurtBox mHitHurtBox;
@@ -21,19 +20,6 @@ namespace StarScavenger
             // Create 3 random small asteroids and destroy big one
             mHitHurtBox.OnCollisionEnter2DEvent(collision =>
             {
-                if (AsteroidType == AsteroidType.Coin)
-                {
-                    int randomNum = Random.Range(1, 5);
-                    Global.Coin.Value += randomNum;
-                    FloatingTextController.Play("金币+" + randomNum, TextType.Coin);
-                }
-                else if (AsteroidType == AsteroidType.Fuel)
-                {
-                    int randomNum = Random.Range(2, 8);
-                    Global.Fuel.Value += randomNum;
-                    FloatingTextController.Play("燃料+" + randomNum, TextType.Fuel);
-                }
-
                 // Wakeup particle controller
                 if (ParticleController != null) { ParticleController.SetActive(true); }
 
