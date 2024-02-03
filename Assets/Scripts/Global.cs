@@ -22,13 +22,14 @@ namespace StarScavenger
 
         // 时间
         public static BindableProperty<float> CurrentSeconds = new(0);
+        public static BindableProperty<bool> IsGamePause = new(false);
 
         // 基本数据
         public static BindableProperty<int> HP = new(3);
         public static BindableProperty<bool> IsReducingHP = new(false);
         public static BindableProperty<int> Shield = new(0);
-        public static BindableProperty<int> Fuel = new(120);
-        public static BindableProperty<int> MaxFuel = new(120);
+        public static BindableProperty<int> Fuel = new(150);
+        public static BindableProperty<int> MaxFuel = new(150);
         public static BindableProperty<int> FuelConsumpt = new(1);
         public static BindableProperty<float> FuelAutoConsumptTime = new(3f);
         public static BindableProperty<int> Coin = new(0);
@@ -61,6 +62,11 @@ namespace StarScavenger
         public static BindableProperty<int> MaxFuelGet = new(8);
         public static BindableProperty<int> MinFuelGet = new(2);
 
+        // 星球数据
+        public static BindableProperty<int> MaxPlanet = new(7);
+        public static BindableProperty<int> DiscoveredPlanetCount = new(0);
+        public static BindableProperty<int> ArrivedPlanetCount = new(0);
+
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
         {
@@ -71,6 +77,7 @@ namespace StarScavenger
         public static void ResetData()
         {
             CurrentSeconds.Value = 0;
+            IsGamePause.Value = false;
 
             HP.Value = 3;
             IsReducingHP.Value = false;
@@ -96,6 +103,10 @@ namespace StarScavenger
             MaxGATime.Value = 3f;
             MinGATime.Value = 1f;
             CanGenerate.Value = true;
+
+            MaxPlanet.Value = 7;
+            DiscoveredPlanetCount.Value = 0;
+            ArrivedPlanetCount.Value = 0;
         }
     }
 }

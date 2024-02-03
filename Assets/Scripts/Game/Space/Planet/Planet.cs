@@ -133,7 +133,8 @@ namespace StarScavenger
                         player.CanAttack = false;
                         // 提示
                         GamePanel.Default.DescriptionShow("开启路径预测\n请勿撞向星球");
-                        GamePanel.Default.DialogShow("我看到了！");
+                        Global.DiscoveredPlanetCount.Value++;
+                        IsDiscover = true;
 
                         // 关闭生成垃圾
                         Global.CanGenerate.Value = false;
@@ -154,7 +155,7 @@ namespace StarScavenger
                         player.CanAttack = true;
 
                         GamePanel.Default.DescriptionShow("关闭路径预测\n允许开火");
-                        GamePanel.Default.DescriptionShow("下个行星在哪？");
+                        GamePanel.Default.DialogShow("下个行星在哪？");
 
                         // 关闭生成垃圾
                         Global.CanGenerate.Value = true;
@@ -164,20 +165,6 @@ namespace StarScavenger
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 自动防御/到达区域
-            DefenseArea.OnTriggerEnter2DEvent(collider2D =>
-            {
-                HitHurtBox hitHurtBox = collider2D.GetComponent<HitHurtBox>();
-                if (hitHurtBox != null)
-                {
-                    if (hitHurtBox.Owner.CompareTag("Player"))
-                    {
-                        // 提示到达该星球
-                        GamePanel.Default.DescriptionShow("已到达！");
-                    }
-                }
-
-            }).UnRegisterWhenGameObjectDestroyed(gameObject);
-
             float stayTime = 0;
 
             DefenseArea.OnTriggerStay2DEvent(collider2D =>
@@ -189,10 +176,13 @@ namespace StarScavenger
                     {
                         stayTime += Time.deltaTime;
 
-                        if (stayTime > 10f)
+                        if (stayTime > 6f)
                         {
                             //TODO 获得成就
                             GamePanel.Default.DialogShow("要晕了~");
+                            GamePanel.Default.DescriptionShow("已到达！");
+                            Global.ArrivedPlanetCount.Value++;
+                            IsArrived = true;
                             stayTime = 0;
                         }
                     }

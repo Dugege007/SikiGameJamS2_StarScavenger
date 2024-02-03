@@ -544,8 +544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa67db899531e534d84532e116e02459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainPanel: {fileID: 0}
   GameTitleText: {fileID: 1023083262348184294}
-  BtnStartGame: {fileID: 0}
+  BtnStartGame: {fileID: 377191547149522557}
+  BtnQuit: {fileID: 5208597275349288334}
 --- !u!1 &1884927664678375218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1549,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6350536427248371862}
-  - component: {fileID: 459106880336111049}
   m_Layer: 0
   m_Name: MainPanel
   m_TagString: Untagged
@@ -1579,22 +1580,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &459106880336111049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443169785919214841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: MainPanel
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Image
 --- !u!1 &8665364009673999867
 GameObject:
   m_ObjectHideFlags: 0

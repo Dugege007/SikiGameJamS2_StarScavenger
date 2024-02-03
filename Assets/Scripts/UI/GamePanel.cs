@@ -10,14 +10,21 @@ namespace StarScavenger
     {
         public static GamePanel Default;
 
+        public Transform TargetPlanetTrans;
+        private Camera mCamera;
+
         protected override void OnInit(IUIData uiData = null)
         {
             mData = uiData as GamePanelData ?? new GamePanelData();
             // please add init code here
 
             Default = this;
+            mCamera = Camera.main;
 
             // 初始隐藏
+            PlanetCount.Hide();
+            PlanetBestCount.Hide();
+
             HeartRed.Hide();
             HeartGreen.Hide();
             HPReducingText.Hide();
@@ -31,11 +38,103 @@ namespace StarScavenger
 
             DialogText.Hide();
 
+            ArrowIndicatorDown.Hide();
+            ArrowIndicatorDownLeft.Hide();
+            ArrowIndicatorDownRight.Hide();
+            ArrowIndicatorLeft.Hide();
+            ArrowIndicatorRight.Hide();
+            ArrowIndicatorUp.Hide();
+            ArrowIndicatorUpLeft.Hide();
+            ArrowIndicatorUpRight.Hide();
+
             // 全局 Update
             ActionKit.OnUpdate.Register(() =>
             {
                 Global.CurrentSeconds.Value += Time.deltaTime;
 
+                Player player = Player.Default;
+                if (player != null)
+                {
+                    if (player.NextTargetPlanet)
+                    {
+                        TargetPlanetTrans = player.NextTargetPlanet.transform;
+
+                        // 获取相对于相机旋转的目标方向
+                        Vector3 toTarget = mCamera.transform.InverseTransformDirection(TargetPlanetTrans.position - player.transform.position);
+                        toTarget.z = 0;
+
+                        DetermineDirection(toTarget);
+                    }
+                }
+
+                // 移动方向提示
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    DpadUp.Show();
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                    DpadDown.Show();
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                    DpadLeft.Show();
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                    DpadRight.Show();
+
+                if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+                    DpadUp.Hide();
+                if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+                    DpadDown.Hide();
+                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+                    DpadLeft.Hide();
+                if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+                    DpadRight.Hide();
+
+                // 操作提示开关
+                if (Input.GetKeyDown(KeyCode.H))
+                    ControlTip.Show();
+                if (Input.GetKeyUp(KeyCode.H))
+                    ControlTip.Hide();
+
+                // 暂停游戏
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Global.IsGamePause.Value = !Global.IsGamePause.Value;
+                    if (Global.IsGamePause.Value)
+                    {
+                        // 打开暂停提示
+                        DialogShow("已暂停，再按 ESC 键继续");
+                        Time.timeScale = 0;
+                    }
+                    else
+                    {
+                        // 打开暂停提示
+                        DialogShow("继续游戏");
+                        Time.timeScale = 1f;
+                    }
+                }
+
+                //#if UNITY_EDITOR
+                // 测试
+                if (Input.GetKeyDown(KeyCode.F1))
+                    Global.HP.Value++;
+
+                if (Input.GetKeyDown(KeyCode.F2))
+                    Global.Fuel.Value += 10;
+
+                if (Input.GetKeyDown(KeyCode.F3))
+
+                    if (Input.GetKeyDown(KeyCode.F4))
+                        Global.ArrivedPlanetCount.Value++;
+
+
+                if (Input.GetKeyDown(KeyCode.F5))
+                    Global.HP.Value--;
+
+                if (Input.GetKeyDown(KeyCode.F6))
+                    Global.Fuel.Value -= 10;
+
+                if (Input.GetKeyDown(KeyCode.F7))
+
+                    if (Input.GetKeyDown(KeyCode.F8))
+                        Global.ArrivedPlanetCount.Value--;
+                //#endif
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 更新当前时间
@@ -49,12 +148,11 @@ namespace StarScavenger
                     int minutes = currentSecondsInt / 60;
                     TimeText.text = $"{minutes:00}:{seconds:00}";
 
-                    if (currentSecondsInt % 60 == 0 && currentSecondsInt > 0)
+                    if (currentSeconds % 60 == 0 && currentSecondsInt > 0)
                     {
                         DialogShow("时光时光慢些吧~");
                     }
                 }
-
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
@@ -171,34 +269,25 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-            // 全局 Update 监听按键
-            ActionKit.OnUpdate.Register(() =>
+            // 星球相关
+            Global.DiscoveredPlanetCount.RegisterWithInitValue(discoveredPlanet =>
             {
-                // 移动方向提示
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                    DpadUp.Show();
-                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                    DpadDown.Show();
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-                    DpadLeft.Show();
-                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-                    DpadRight.Show();
+                if (discoveredPlanet > 0)
+                {
+                    PlanetCount.Show();
+                    PlanetCountText.text = discoveredPlanet + "/" + Global.MaxPlanet.Value;
+                    FloatingTextController.Play("发现星球", TextType.Discover);
+                }
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-                if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-                    DpadUp.Hide();
-                if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-                    DpadDown.Hide();
-                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
-                    DpadLeft.Hide();
-                if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
-                    DpadRight.Hide();
-
-                // 操作提示开关
-                if (Input.GetKeyDown(KeyCode.H))
-                    ControlTip.Show();
-                if (Input.GetKeyUp(KeyCode.H))
-                    ControlTip.Hide();
-
+            Global.ArrivedPlanetCount.RegisterWithInitValue(arrivedPlanet =>
+            {
+                if (arrivedPlanet > 0)
+                {
+                    PlanetBestCount.Show();
+                    PlanetBestCountText.text = arrivedPlanet + "/" + Global.MaxPlanet.Value;
+                    FloatingTextController.Play("到达星球", TextType.Arrive);
+                }
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 提示语
@@ -250,6 +339,61 @@ namespace StarScavenger
             {
                 if (parent.childCount <= 1) return;
                 parent.GetChild(0).gameObject.DestroySelfGracefully();
+            }
+        }
+
+        private bool IsTargetVisible(Vector3 toTarget)
+        {
+            Vector3 screenPoint = mCamera.WorldToViewportPoint(TargetPlanetTrans.position);
+            return screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+        }
+
+        private void DetermineDirection(Vector3 toTarget)
+        {
+            ArrowIndicatorDown.Hide();
+            ArrowIndicatorDownLeft.Hide();
+            ArrowIndicatorDownRight.Hide();
+            ArrowIndicatorLeft.Hide();
+            ArrowIndicatorRight.Hide();
+            ArrowIndicatorUp.Hide();
+            ArrowIndicatorUpLeft.Hide();
+            ArrowIndicatorUpRight.Hide();
+
+            // 判断方向
+            float angle = Mathf.Atan2(toTarget.y, toTarget.x) * Mathf.Rad2Deg;
+            if (angle < 0) angle += 360; // 将角度转换为0到360度
+
+            if (angle > 337.5 || angle <= 22.5)
+            {
+                ArrowIndicatorRight.Show();
+            }
+            else if (angle > 22.5 && angle <= 67.5)
+            {
+                ArrowIndicatorUpRight.Show();
+            }
+            else if (angle > 67.5 && angle <= 112.5)
+            {
+                ArrowIndicatorUp.Show();
+            }
+            else if (angle > 112.5 && angle <= 157.5)
+            {
+                ArrowIndicatorUpLeft.Show();
+            }
+            else if (angle > 157.5 && angle <= 202.5)
+            {
+                ArrowIndicatorLeft.Show();
+            }
+            else if (angle > 202.5 && angle <= 247.5)
+            {
+                ArrowIndicatorDownLeft.Show();
+            }
+            else if (angle > 247.5 && angle <= 292.5)
+            {
+                ArrowIndicatorDown.Show();
+            }
+            else if (angle > 292.5 && angle <= 337.5)
+            {
+                ArrowIndicatorDownRight.Show();
             }
         }
 

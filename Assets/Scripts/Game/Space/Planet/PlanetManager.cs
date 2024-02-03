@@ -15,10 +15,11 @@ namespace StarScavenger
             {
                 Vector3 playerPosition = Player.Default.transform.position;
 
-                // 查询来找到距离玩家最近的星球
+                // 查询到玩家距离最近的、未到达、未被发现的星球
                 Planet nearestPlanet = Planets
-                    .OrderBy(planet => (planet.transform.position - playerPosition).sqrMagnitude)
-                    .FirstOrDefault();
+                     .Where(planet => !planet.IsArrived && !planet.IsDiscover) // 添加过滤条件
+                     .OrderBy(planet => (planet.transform.position - playerPosition).sqrMagnitude)
+                     .FirstOrDefault();
 
                 // 设置为下一个目标星球
                 Player.Default.NextTargetPlanet = nearestPlanet;

@@ -5,7 +5,7 @@ using QFramework;
 
 namespace StarScavenger
 {
-	// Generate Id:fc0bbccc-8b33-47b9-8840-c73bc219a632
+	// Generate Id:2a4b95d7-7bd1-4875-8d93-11e7108190b0
 	public partial class GamePanel
 	{
 		public const string Name = "GamePanel";
@@ -28,6 +28,14 @@ namespace StarScavenger
 		public UnityEngine.UI.Text HPReducingText;
 		[SerializeField]
 		public UnityEngine.UI.Text CoinText;
+		[SerializeField]
+		public UnityEngine.UI.Image PlanetCount;
+		[SerializeField]
+		public UnityEngine.UI.Text PlanetCountText;
+		[SerializeField]
+		public UnityEngine.UI.Image PlanetBestCount;
+		[SerializeField]
+		public UnityEngine.UI.Text PlanetBestCountText;
 		[SerializeField]
 		public UnityEngine.UI.Text TimeText;
 		[SerializeField]
@@ -60,6 +68,22 @@ namespace StarScavenger
 		public RectTransform DialogHolder;
 		[SerializeField]
 		public UnityEngine.UI.Text DialogText;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorUp;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorUpLeft;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorUpRight;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorLeft;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorRight;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorDown;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorDownLeft;
+		[SerializeField]
+		public UnityEngine.UI.Image ArrowIndicatorDownRight;
 		
 		private GamePanelData mPrivateData = null;
 		
@@ -74,6 +98,10 @@ namespace StarScavenger
 			HeartGreen = null;
 			HPReducingText = null;
 			CoinText = null;
+			PlanetCount = null;
+			PlanetCountText = null;
+			PlanetBestCount = null;
+			PlanetBestCountText = null;
 			TimeText = null;
 			BtnAddHP = null;
 			BtnRemoveHP = null;
@@ -90,6 +118,14 @@ namespace StarScavenger
 			DpadUp = null;
 			DialogHolder = null;
 			DialogText = null;
+			ArrowIndicatorUp = null;
+			ArrowIndicatorUpLeft = null;
+			ArrowIndicatorUpRight = null;
+			ArrowIndicatorLeft = null;
+			ArrowIndicatorRight = null;
+			ArrowIndicatorDown = null;
+			ArrowIndicatorDownLeft = null;
+			ArrowIndicatorDownRight = null;
 			
 			mData = null;
 		}
