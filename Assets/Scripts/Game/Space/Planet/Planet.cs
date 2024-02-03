@@ -75,8 +75,7 @@ namespace StarScavenger
 
                         description.text = "接近中";
 
-                        title.Show()
-                            .Delay(3f, () =>
+                        title.Show().Delay(3f, () =>
                             {
                                 title.Hide();
                             }).Execute();
@@ -214,7 +213,7 @@ namespace StarScavenger
                     if (hitHurtBox.Owner.CompareTag("Player"))
                     {
                         // 短时间离开该星球，提示引力弹弓
-                        if (stayTime <= 2f)
+                        if (stayTime <= 3f)
                         {
                             GamePanel.Default.DescriptionShow("引力弹弓！");
                             // 补充燃料
@@ -222,6 +221,8 @@ namespace StarScavenger
                             Global.Fuel.Value = Global.MaxFuel.Value;
 
                             GamePanel.Default.DialogShow("加速！加速！");
+
+                            stayTime = 0;
                         }
                     }
                 }

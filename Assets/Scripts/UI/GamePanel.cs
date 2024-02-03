@@ -21,6 +21,7 @@ namespace StarScavenger
             HeartRed.Hide();
             HeartGreen.Hide();
             HPReducingText.Hide();
+            AccelerationDownText.Hide();
             ControlTip.Hide();
 
             DpadUp.Hide();
@@ -29,6 +30,13 @@ namespace StarScavenger
             DpadRight.Hide();
 
             DialogText.Hide();
+
+            // 全局 Update
+            ActionKit.OnUpdate.Register(() =>
+            {
+                Global.CurrentSeconds.Value += Time.deltaTime;
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 更新当前时间
             Global.CurrentSeconds.RegisterWithInitValue(currentSeconds =>
@@ -39,9 +47,15 @@ namespace StarScavenger
                     int currentSecondsInt = Mathf.FloorToInt(currentSeconds);
                     int seconds = currentSecondsInt % 60;
                     int minutes = currentSecondsInt / 60;
-
                     TimeText.text = $"{minutes:00}:{seconds:00}";
+
+                    if (currentSecondsInt % 60 == 0 && currentSecondsInt > 0)
+                    {
+                        DialogShow("时光时光慢些吧~");
+                    }
                 }
+
+
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 生成 HP 和 Shield UI
@@ -116,12 +130,15 @@ namespace StarScavenger
                 }
                 else if (lastFuel - fuel < 0)
                 {
+                    if (Player.Default.CanAttack)
+                    {
+                        if (fuel == Global.MaxFuel.Value)
+                            DialogShow("油箱满满的安全感~");
+                    }
                     if (fuel == 10)
                         DialogShow("还能 再撑一下...");
                     else if (fuel == 50)
                         DialogShow("开源节流");
-                    else if(fuel == Global.MaxFuel.Value)
-                        DialogShow("油箱满满的安全感~");
                 }
 
                 lastFuel = fuel;
@@ -147,7 +164,7 @@ namespace StarScavenger
                 SpeedText.text = speed.ToString("0.0");
 
                 if (speed == 5)
-                    DialogShow("悠着点，小心小行星！");
+                    DialogShow("速度越快，耗燃料越快");
 
                 if (speed == 10)
                     DialogShow("想要超光速吗？");
@@ -185,9 +202,11 @@ namespace StarScavenger
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 提示语
+            SceneTitleText.text = "流浪者星系";
             SceneTitleText.Show().Delay(3f, () =>
             {
-                SceneTitleText.text = "流浪者星系";
+                SceneTitleText.Hide();
+
             }).Execute();
 
             DescriptionShow("开始探索");

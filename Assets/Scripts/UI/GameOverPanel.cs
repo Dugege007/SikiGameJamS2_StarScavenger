@@ -1,5 +1,3 @@
-using UnityEngine;
-using UnityEngine.UI;
 using QFramework;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +19,14 @@ namespace StarScavenger
 				Player.Default.DestroyGameObjGracefully();
 				CloseSelf();
 				SceneManager.LoadScene("GameStart");
+			});
+
+			BtnRestart.onClick.AddListener(() =>
+			{
+				Global.ResetData();
+				Player.Default.DestroyGameObjGracefully();
+				CloseSelf();
+				SceneManager.LoadScene("Game");
 			});
 		}
 		
