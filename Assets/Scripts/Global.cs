@@ -1,10 +1,9 @@
 ﻿using QFramework;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace StarScavenger
 {
-    public  class Global: Architecture<Global>
+    public class Global : Architecture<Global>
     {
         protected override void Init()
         {
@@ -12,12 +11,12 @@ namespace StarScavenger
 
         // 基本数据
         public static BindableProperty<int> HP = new(3);
+        public static BindableProperty<bool> IsReducingHP = new(false);
         public static BindableProperty<int> Shield = new(1);
         public static BindableProperty<int> Fuel = new(100);
         public static BindableProperty<int> MaxFuel = new(100);
         public static BindableProperty<int> FuelConsumpt = new(1);
         public static BindableProperty<float> FuelConsumptTime = new(3f);
-
         public static BindableProperty<int> Coin = new(0);
 
         // 运动数据
@@ -36,6 +35,8 @@ namespace StarScavenger
         public static BindableProperty<int> PathResolution = new(20);
         // 预测路径时间长度
         public static BindableProperty<float> PathPredictTime = new(2f);
+        // 是否即将碰撞
+        public static BindableProperty<bool> IsAboutCollide = new(false);
 
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
@@ -64,6 +65,7 @@ namespace StarScavenger
 
             PathResolution.Value = 20;
             PathPredictTime.Value = 2f;
+            IsAboutCollide.Value = false;
         }
     }
 }

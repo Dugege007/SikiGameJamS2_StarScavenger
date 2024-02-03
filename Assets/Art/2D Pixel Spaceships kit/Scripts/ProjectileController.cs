@@ -32,7 +32,7 @@ namespace StarScavenger
                 if (hitHurtBox.Owner.CompareTag("Asteroid"))
                 {
                     Animator = gameObject.GetComponentInChildren<Animator>();
-                    Animator.SetTrigger("Hit");
+                    Animator.CrossFade("Projectile_3_Explosion", 0.1f);
                     Global.Coin.Value++;
 
                     Destroy(gameObject, ExplosionClip.length);
@@ -41,7 +41,7 @@ namespace StarScavenger
                 if (hitHurtBox.Owner.CompareTag("Player"))
                 {
                     Animator = gameObject.GetComponentInChildren<Animator>();
-                    Animator.SetTrigger("Hit");
+                    Animator.CrossFade("Projectile_3_Explosion", 0.1f);
                     if (Global.Shield.Value>0)
                         Global.Shield.Value--;
                     else

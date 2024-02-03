@@ -18,16 +18,12 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos:
-    - TypeName: RectTransform
-      PathToRoot: FloatingText
-      MemberName: FloatingText
+    BindInfos: []
     ScriptsFolder: Assets/Scripts/Game/FX
-    ClassName: FloatingTextController
+    ClassName: NavLine
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class FloatingTextController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class NavLine : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:43a3300b-d4ac-4f0c-9a09-d7146613e2c7\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class FloatingTextController\r\n\t{\r\n\r\n\t\tpublic
-      RectTransform FloatingText;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:04233573-7d0b-4707-93c0-a8eb7d6c36e0\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class NavLine\r\n\t{\r\n\r\n\t}\r\n}\r\n"

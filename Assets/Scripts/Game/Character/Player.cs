@@ -11,6 +11,8 @@ namespace StarScavenger
 
         private float mFCTime = 0;
         private float mAutoFCTime = 0;
+        private float mReduceHPTime = 0;
+
         private float mCurrentMoveSpeed;
         private bool mIsTurning = false;
 
@@ -33,6 +35,7 @@ namespace StarScavenger
             mCurrentMoveSpeed = Global.MoveSpeed.Value;
             SelfRigidbody2D.velocity = Vector3.up * mCurrentMoveSpeed;
 
+            // 注册碰撞事件
             HurtBox.OnCollisionEnter2DEvent(collider2D =>
             {
                 HitHurtBox hitBox = collider2D.gameObject.GetComponentInChildren<HitHurtBox>();
@@ -42,10 +45,21 @@ namespace StarScavenger
                     if (hitBox.Owner.CompareTag("Asteroid"))
                     {
                         Global.HP.Value--;
-                        Debug.Log("CurrentHP: " + Global.HP.Value);
-                        //TODO 播放受伤音效
                     }
+                    if (hitBox.Owner.CompareTag("Planet"))
+                    {
+                        Global.HP.Value = 0;
+                    }
+
+                    Debug.Log("CurrentHP: " + Global.HP.Value);
+                    //TODO 播放碰撞音效
                 }
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
+            Global.IsReducingHP.RegisterWithInitValue(isReducingHP =>
+            {
+                mReduceHPTime = 0;
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
@@ -61,15 +75,34 @@ namespace StarScavenger
                 //TODO 失败音效
                 gameObject.DestroySelfGracefully();
                 UIKit.OpenPanel<GameOverPanel>();
-            }
-
-            if (Global.Fuel.Value <= 0)
-            {
-                Global.Fuel.Value = 0;
                 return;
             }
 
-            // 常时燃料耗费
+            // 持续扣血状态
+            if (Global.IsReducingHP.Value)
+            {
+                mReduceHPTime += Time.deltaTime;
+                if (mReduceHPTime > 5f)
+                {
+                    Global.HP.Value--;
+                    mReduceHPTime = 0;
+                }
+            }
+
+            // 燃料为 0 时
+            if (Global.Fuel.Value < 1)
+            {
+                if (Global.IsReducingHP.Value == false)
+                    Global.IsReducingHP.Value = true;
+                return;
+            }
+            else
+            {
+                if (Global.IsReducingHP.Value)
+                    Global.IsReducingHP.Value = false;
+            }
+
+            // 常时耗费燃料
             if (mAutoFCTime > Global.FuelConsumptTime.Value)
             {
                 Global.Fuel.Value--;
@@ -101,53 +134,46 @@ namespace StarScavenger
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
-            if (Global.Fuel.Value <= 0)
+            if (Global.Fuel.Value > 0)
+            {
+                // 获取速度大小
+                Global.CurrentSpeed.Value = SelfRigidbody2D.velocity.magnitude;
+
+                // 转向
+                if (horizontal != 0)
+                {
+                    mIsTurning = true;
+                    transform.Rotate(0, 0, -horizontal * Global.RotateSpeed.Value);
+                    // 调整速度方向
+                    SelfRigidbody2D.velocity = transform.up * Global.CurrentSpeed.Value;
+                    // 消耗燃料
+                    FuelConsumpt(0.5f, Global.FuelConsumpt.Value);
+                }
+                else
+                {
+                    mIsTurning = false;
+                }
+                //TODO 转向动画
+
+                // 移动
+                if (vertical > 0)
+                {
+                    mPropulsiveForce = transform.up * Global.PropulsiveForceValue.Value;
+                    FuelConsumpt(0.1f, Global.FuelConsumpt.Value);
+                }
+                else if (vertical < 0)
+                {
+                    mPropulsiveForce = -transform.up * Global.PropulsiveForceValue.Value;
+                    FuelConsumpt(0.1f, Global.FuelConsumpt.Value);
+                }
+                else
+                {
+                    mPropulsiveForce = Vector2.zero;
+                }
+            }
+            else
             {
                 Global.Fuel.Value = 0;
-                return;
-            }
-
-            if (horizontal > 0)
-            {
-                //TODO 右转动画
-            }
-            else if (horizontal < 0)
-            {
-                //TODO 左转动画
-            }
-
-            // 获取速度大小
-            Global.CurrentSpeed.Value = SelfRigidbody2D.velocity.magnitude;
-
-            // 转向
-            if (horizontal != 0)
-            {
-                mIsTurning = true;
-                transform.Rotate(0, 0, -horizontal * Global.RotateSpeed.Value);
-                // 调整速度方向
-                SelfRigidbody2D.velocity = transform.up * Global.CurrentSpeed.Value;
-                // 消耗燃料
-                FuelConsumpt(0.5f, Global.FuelConsumpt.Value);
-            }
-            else
-            {
-                mIsTurning = false;
-            }
-
-            // 移动
-            if (vertical > 0)
-            {
-                mPropulsiveForce = transform.up * Global.PropulsiveForceValue.Value;
-                FuelConsumpt(0.1f, Global.FuelConsumpt.Value);
-            }
-            else if (vertical < 0)
-            {
-                mPropulsiveForce = -transform.up * Global.PropulsiveForceValue.Value;
-                FuelConsumpt(0.1f, Global.FuelConsumpt.Value);
-            }
-            else
-            {
-                mPropulsiveForce = Vector2.zero;
             }
 
             Vector2 resulForces = mPropulsiveForce + mGravity;
@@ -189,7 +215,7 @@ namespace StarScavenger
                 }
 
                 // 使用RK4方法更新预测路径
-                UpdatePathRK4(planet, transform.position, SelfRigidbody2D.velocity);
+                UpdatePathWithRK4(planet, transform.position, SelfRigidbody2D.velocity);
 
                 //Debug.Log("重力方向：" + gravityDirection.normalized + "\n" + "重力大小：" + mGravity);
             }
@@ -214,7 +240,7 @@ namespace StarScavenger
             return acceleration;
         }
 
-        private void UpdatePathRK4(Planet planet, Vector2 currentPos, Vector2 currentVelocity)
+        private void UpdatePathWithRK4(Planet planet, Vector2 currentPos, Vector2 currentVelocity)
         {
             float deltaTime = Global.PathPredictTime.Value / Global.PathResolution.Value;
 
@@ -237,12 +263,23 @@ namespace StarScavenger
                 Vector2 finalVelocity = currentVelocity + (k1_acc + 2f * (k2_acc + k3_acc) + k4_acc) * (deltaTime / 6f);
                 Vector2 finalPos = currentPos + (k1_vel + 2f * (k2_vel + k3_vel) + k4_vel) * (deltaTime / 6f);
 
-                // 使用计算的位置更新 LineRenderer
-                LineRenderer1.SetPosition(i, finalPos);
-
-                // 为下一个迭代准备当前速度和位置
-                currentVelocity = finalVelocity;
-                currentPos = finalPos;
+                if (Vector2.Distance(planet.transform.position, finalPos) < planet.Radius)
+                {
+                    // 使用计算的位置更新 LineRenderer
+                    LineRenderer1.SetPosition(i, finalPos);
+                    if (Global.IsAboutCollide.Value == false)
+                        Global.IsAboutCollide.Value = true;
+                    continue;
+                }
+                else
+                {
+                    LineRenderer1.SetPosition(i, finalPos);
+                    if (Global.IsAboutCollide.Value)
+                        Global.IsAboutCollide.Value = false;
+                    // 为下一个迭代准备当前速度和位置
+                    currentVelocity = finalVelocity;
+                    currentPos = finalPos;
+                }
             }
         }
 
@@ -253,32 +290,6 @@ namespace StarScavenger
             // 使用简化的方法来获取第一个预测点的位置，基于当前速度和加速度
             Vector2 firstPredictedPos = currentPos + currentVelocity * deltaTime + 0.5f * acceleration * Mathf.Pow(deltaTime, 2);
             return firstPredictedPos;
-        }
-
-        private void UpdatePath(Planet planet, Vector2 currentPos, Vector2 currentVelocity, Vector2 currentAcceleration)
-        {
-            Vector2 predictedPos;
-            float t = Global.PathPredictTime.Value / Global.PathResolution.Value; // 每一步的时间间隔
-
-            // 设置LineRenderer的点
-            for (int i = 0; i < Global.PathResolution.Value; i++)
-            {
-                // 更新位置：S = S0 + U*t + 0.5*a*t^2
-                predictedPos = currentPos + currentVelocity * t + 0.5f * Mathf.Pow(t, 2) * currentAcceleration;
-
-                // 将计算的位置设置为轨迹的一部分
-                LineRenderer2.SetPosition(i, predictedPos);
-
-                // 基于新的预测位置，计算下一点的重力加速度
-                Vector2 gravityDirection = (Vector2)planet.transform.position - predictedPos;
-                currentAcceleration = gravityDirection.normalized * planet.Gravity / Mathf.Pow(gravityDirection.magnitude, 2);
-
-                // 为下一次迭代更新当前位置
-                currentPos = predictedPos;
-
-                // 更新速度：V = U + a*t
-                currentVelocity += currentAcceleration * t;
-            }
         }
 
         private void OnDestroy()
