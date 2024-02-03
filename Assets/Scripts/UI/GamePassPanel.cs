@@ -5,26 +5,30 @@ using UnityEngine.SceneManagement;
 
 namespace StarScavenger
 {
-    public class GameStartPanelData : UIPanelData
+    public class GamePassPanelData : UIPanelData
     {
     }
-    public partial class GameStartPanel : UIPanel
+    public partial class GamePassPanel : UIPanel
     {
         protected override void OnInit(IUIData uiData = null)
         {
-            mData = uiData as GameStartPanelData ?? new GameStartPanelData();
+            mData = uiData as GamePassPanelData ?? new GamePassPanelData();
             // please add init code here
 
-            BtnStartGame.onClick.AddListener(() =>
+            BtnBackToMenu.onClick.AddListener(() =>
             {
-                CloseSelf();
                 Global.ResetData();
-                SceneManager.LoadScene("Game");
+                Player.Default.DestroyGameObjGracefully();
+                CloseSelf();
+                SceneManager.LoadScene("GameStart");
             });
 
-            BtnQuit.onClick.AddListener(() =>
+            BtnRestart.onClick.AddListener(() =>
             {
-                Application.Quit();
+                Global.ResetData();
+                Player.Default.DestroyGameObjGracefully();
+                CloseSelf();
+                SceneManager.LoadScene("Game");
             });
         }
 

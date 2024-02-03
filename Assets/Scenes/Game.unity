@@ -5707,8 +5707,6 @@ MonoBehaviour:
   - {fileID: 2964159490034847675}
   - {fileID: 6657383964371932990}
   - {fileID: 981751142086256142}
-  MaxJunkGTime: 3
-  MinJunkGTime: 1
   MinJunkGRadius: 21
   MaxJunkGRadius: 25
   AsteroidArea1: {fileID: 1550212800}

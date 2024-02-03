@@ -114,6 +114,16 @@ namespace StarScavenger
                         player.GravityEffect(null);
 
                         GamePanel.Default.DialogShow("浩瀚的宇宙啊~");
+
+                        // 通关条件
+                        if (Global.DiscoveredPlanetCount.Value >= 7)
+                        {
+                            player.SelfRigidbody2D.velocity = Vector3.zero;
+                            player.CanAttack = false;
+                            player.CanMove = false;
+                            Global.CanGenerate.Value = false;
+                            UIKit.OpenPanel<GamePassPanel>();
+                        }
                     }
                 }
 

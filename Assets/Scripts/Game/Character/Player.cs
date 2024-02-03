@@ -9,6 +9,7 @@ namespace StarScavenger
 
         public Planet NextTargetPlanet;
         public bool CanAttack = true;
+        public bool CanMove = true;
 
         private float mFCTime = 0;
         private float mAutoFCTime = 0;
@@ -133,12 +134,13 @@ namespace StarScavenger
 
         private void FixedUpdate()
         {
+            if (!CanMove) return;
+
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
             if (Global.Fuel.Value > 0)
             {
-
                 // ×ªÏò
                 if (horizontal != 0)
                 {
