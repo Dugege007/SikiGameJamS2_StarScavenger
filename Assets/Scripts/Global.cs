@@ -5,8 +5,19 @@ namespace StarScavenger
 {
     public class Global : Architecture<Global>
     {
+#if UNITY_EDITOR
+        [UnityEditor.MenuItem("Tool/Clear All Data")]
+        public static void ClearAllData()
+        {
+            PlayerPrefs.DeleteAll();
+        }
+#endif
+
         protected override void Init()
         {
+            // 注册模块
+            this.RegisterSystem(new SaveSystem());
+            this.RegisterSystem(new CoinUpgradeSystem());
         }
 
         // 时间
@@ -45,6 +56,10 @@ namespace StarScavenger
         public static BindableProperty<float> MaxGATime = new(3f);
         public static BindableProperty<float> MinGATime = new(1f);
         public static BindableProperty<bool> CanGenerate = new(true);
+        public static BindableProperty<int> MaxCoinGet = new(5);
+        public static BindableProperty<int> MinCoinGet = new(1);
+        public static BindableProperty<int> MaxFuelGet = new(8);
+        public static BindableProperty<int> MinFuelGet = new(2);
 
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
