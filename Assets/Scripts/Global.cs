@@ -15,7 +15,9 @@ namespace StarScavenger
         public static BindableProperty<int> Shield = new(1);
         public static BindableProperty<int> Fuel = new(100);
         public static BindableProperty<int> MaxFuel = new(100);
-        public static BindableProperty<int> FuelConsumption = new(1);
+        public static BindableProperty<int> FuelConsumpt = new(1);
+        public static BindableProperty<float> FuelConsumptTime = new(3f);
+
         public static BindableProperty<int> Coin = new(0);
 
         // 运动数据
@@ -47,7 +49,8 @@ namespace StarScavenger
             HP.Value = 3;
             Shield.Value = 1;
             Fuel.Value = MaxFuel.Value;
-            FuelConsumption.Value = 1;
+            FuelConsumpt.Value = 1;
+            FuelConsumptTime.Value = 3f;
             Coin.Value = 0;
 
             MoveSpeed.Value = 1f;

@@ -7,9 +7,10 @@ namespace StarScavenger
     {
         public static Player Default;
 
-        public bool CanAttack = false;
+        public bool CanAttack = true;
 
-        private float mCurrentCTime = 0;
+        private float mFCTime = 0;
+        private float mAutoFCTime = 0;
         private float mCurrentMoveSpeed;
         private bool mIsTurning = false;
 
@@ -26,6 +27,8 @@ namespace StarScavenger
             LineRenderer1.positionCount = Global.PathResolution.Value;
             LineRenderer2.positionCount = Global.PathResolution.Value;
             Projectile.Hide();
+            LineRenderer1.Hide();
+            LineRenderer2.Hide();
 
             mCurrentMoveSpeed = Global.MoveSpeed.Value;
             SelfRigidbody2D.velocity = Vector3.up * mCurrentMoveSpeed;
@@ -49,7 +52,8 @@ namespace StarScavenger
 
         private void Update()
         {
-            mCurrentCTime += Time.deltaTime;
+            mFCTime += Time.deltaTime;
+            mAutoFCTime += Time.deltaTime;
 
             if (Global.HP.Value <= 0)
             {
@@ -57,6 +61,19 @@ namespace StarScavenger
                 //TODO 失败音效
                 gameObject.DestroySelfGracefully();
                 UIKit.OpenPanel<GameOverPanel>();
+            }
+
+            if (Global.Fuel.Value <= 0)
+            {
+                Global.Fuel.Value = 0;
+                return;
+            }
+
+            // 常时燃料耗费
+            if (mAutoFCTime > Global.FuelConsumptTime.Value)
+            {
+                Global.Fuel.Value--;
+                mAutoFCTime = 0;
             }
 
             if (CanAttack)
@@ -84,6 +101,12 @@ namespace StarScavenger
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
+            if (Global.Fuel.Value <= 0)
+            {
+                Global.Fuel.Value = 0;
+                return;
+            }
+
             if (horizontal > 0)
             {
                 //TODO 右转动画
@@ -104,7 +127,7 @@ namespace StarScavenger
                 // 调整速度方向
                 SelfRigidbody2D.velocity = transform.up * Global.CurrentSpeed.Value;
                 // 消耗燃料
-                ConsumptionFuel(0.5f, Global.FuelConsumption.Value);
+                FuelConsumpt(0.5f, Global.FuelConsumpt.Value);
             }
             else
             {
@@ -115,14 +138,12 @@ namespace StarScavenger
             if (vertical > 0)
             {
                 mPropulsiveForce = transform.up * Global.PropulsiveForceValue.Value;
-                // 消耗燃料
-                ConsumptionFuel(0.1f, Global.FuelConsumption.Value);
+                FuelConsumpt(0.1f, Global.FuelConsumpt.Value);
             }
             else if (vertical < 0)
             {
                 mPropulsiveForce = -transform.up * Global.PropulsiveForceValue.Value;
-                // 消耗燃料
-                ConsumptionFuel(0.1f, Global.FuelConsumption.Value);
+                FuelConsumpt(0.1f, Global.FuelConsumpt.Value);
             }
             else
             {
@@ -131,8 +152,6 @@ namespace StarScavenger
 
             Vector2 resulForces = mPropulsiveForce + mGravity;
             SelfRigidbody2D.AddForce(resulForces, ForceMode2D.Force);
-
-
         }
 
         /// <summary>
@@ -140,11 +159,11 @@ namespace StarScavenger
         /// </summary>
         /// <param name="cTime">间隔时间</param>
         /// <param name="consumptionValue">消耗数量</param>
-        private void ConsumptionFuel(float cTime, int consumptionValue = 1)
+        private void FuelConsumpt(float cTime, int consumptionValue = 1)
         {
-            if (mCurrentCTime >= cTime)
+            if (mFCTime >= cTime)
             {
-                mCurrentCTime = 0;
+                mFCTime = 0;
                 Global.Fuel.Value -= consumptionValue;
             }
         }

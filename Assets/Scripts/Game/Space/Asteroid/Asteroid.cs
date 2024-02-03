@@ -3,6 +3,12 @@ using QFramework;
 
 namespace StarScavenger
 {
+    public enum AsteroidType
+    {
+        Fuel,
+        Coin,
+    }
+
     public class Asteroid : MonoBehaviour
     {
         public float MinMoveSpeed = 0f;

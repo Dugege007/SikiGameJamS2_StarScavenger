@@ -54,6 +54,12 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            Global.Coin.RegisterWithInitValue(coin =>
+            {
+                CoinText.text = coin.ToString();
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
             Global.CurrentSpeed.RegisterWithInitValue(speed =>
             {
                 SpeedSlider.value = speed / Global.MaxSpeed.Value;

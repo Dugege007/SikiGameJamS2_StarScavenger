@@ -39,7 +39,7 @@ namespace StarScavenger
                 {
                     // 基于玩家当前速度计算生成角度范围
                     // 速度越快，角度范围越小，最小不低于 45 度
-                    float angleRange = Mathf.Max(180 - Global.CurrentSpeed.Value * 10, 45);
+                    float angleRange = Mathf.Max(180 - Global.CurrentSpeed.Value * 20f, 24f);
 
                     // 获取玩家前进方向的角度
                     Vector2 velocityDirection = player.SelfRigidbody2D.velocity.normalized;

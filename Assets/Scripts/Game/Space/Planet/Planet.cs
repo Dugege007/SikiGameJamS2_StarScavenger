@@ -43,6 +43,7 @@ namespace StarScavenger
                     {
                         Player.Default.LineRenderer1.Hide();
                         Player.Default.GravityEffect(null);
+                        Player.Default.CanAttack = true;
                     }
                 }
 
