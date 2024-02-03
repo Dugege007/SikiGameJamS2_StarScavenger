@@ -13,8 +13,8 @@ namespace StarScavenger
         public static BindableProperty<int> HP = new(3);
         public static BindableProperty<bool> IsReducingHP = new(false);
         public static BindableProperty<int> Shield = new(0);
-        public static BindableProperty<int> Fuel = new(100);
-        public static BindableProperty<int> MaxFuel = new(100);
+        public static BindableProperty<int> Fuel = new(150);
+        public static BindableProperty<int> MaxFuel = new(150);
         public static BindableProperty<int> FuelConsumpt = new(1);
         public static BindableProperty<float> FuelAutoConsumptTime = new(3f);
         public static BindableProperty<int> Coin = new(0);
@@ -41,6 +41,7 @@ namespace StarScavenger
         // 小行星数据
         public static BindableProperty<float> MaxGATime = new(3f);
         public static BindableProperty<float> MinGATime = new(1f);
+        public static BindableProperty<bool> CanGenerate = new(true);
 
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
@@ -74,6 +75,7 @@ namespace StarScavenger
 
             MaxGATime.Value = 3f;
             MinGATime.Value = 1f;
+            CanGenerate.Value = true;
         }
     }
 }

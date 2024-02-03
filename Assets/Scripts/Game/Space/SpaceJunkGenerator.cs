@@ -39,19 +39,21 @@ namespace StarScavenger
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
             // 玩家离开小行星带
-            AsteroidArea1.OnTriggerEnter2DEvent(collider2D =>
+            AsteroidArea1.OnTriggerExit2DEvent(collider2D =>
             {
-                SetEnterAsteroidAreaCollider(collider2D);
+                SetExitAsteroidAreaCollider(collider2D);
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
-            AsteroidArea2.OnTriggerEnter2DEvent(collider2D =>
+            AsteroidArea2.OnTriggerExit2DEvent(collider2D =>
             {
-                SetEnterAsteroidAreaCollider(collider2D);
+                SetExitAsteroidAreaCollider(collider2D);
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
         private void Update()
         {
+            if (Global.CanGenerate.Value == false) return;
+
             mCurrentGTime += Time.deltaTime;
 
             if (mCurrentGTime > mNextGtime)

@@ -130,8 +130,6 @@ namespace StarScavenger
 
             }).Start(this);
 
-
-
 #if UNITY_EDITOR
             // ²âÊÔ
             BtnAddHP.onClick.AddListener(() =>
