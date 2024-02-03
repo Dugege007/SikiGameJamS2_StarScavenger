@@ -67,6 +67,15 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            Global.IsReducingHP.RegisterWithInitValue(isReducingHP =>
+            {
+                if (isReducingHP)
+                    HeartRed.GetComponent<Animator>().CrossFade("HeartBlink", 0.1f);
+                else
+                    HeartRed.GetComponent<Animator>().CrossFade("HeartNormal", 0.1f);
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
             // ²âÊÔ
             BtnAddHP.onClick.AddListener(() =>
             {

@@ -12,7 +12,7 @@ namespace StarScavenger
         // 基本数据
         public static BindableProperty<int> HP = new(3);
         public static BindableProperty<bool> IsReducingHP = new(false);
-        public static BindableProperty<int> Shield = new(1);
+        public static BindableProperty<int> Shield = new(0);
         public static BindableProperty<int> Fuel = new(100);
         public static BindableProperty<int> MaxFuel = new(100);
         public static BindableProperty<int> FuelConsumpt = new(1);
@@ -48,7 +48,8 @@ namespace StarScavenger
         public static void ResetData()
         {
             HP.Value = 3;
-            Shield.Value = 1;
+            IsReducingHP.Value = false;
+            Shield.Value = 0;
             Fuel.Value = MaxFuel.Value;
             FuelConsumpt.Value = 1;
             FuelConsumptTime.Value = 3f;

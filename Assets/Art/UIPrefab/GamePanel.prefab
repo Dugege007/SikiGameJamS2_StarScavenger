@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 375415633096325313}
   - component: {fileID: 3848731772556911636}
   - component: {fileID: 4488786692891846395}
+  - component: {fileID: 6853972232915108592}
   m_Layer: 0
   m_Name: HeartRed
   m_TagString: Untagged
@@ -200,6 +201,27 @@ MonoBehaviour:
   CustomComponentName: HeartRed
   CustomComment: 
   mComponentName: UnityEngine.UI.Image
+--- !u!95 &6853972232915108592
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659296116401729150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff880f5401dd8b349b31c8c595f4a239, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &769349652157282291
 GameObject:
   m_ObjectHideFlags: 0
