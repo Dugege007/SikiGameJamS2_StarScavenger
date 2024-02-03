@@ -19,27 +19,29 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: StarScavenger.HitHurtBox
-      PathToRoot: HurtBox
-      MemberName: HurtBox
-    - TypeName: UnityEngine.LineRenderer
-      PathToRoot: LineRenderer1
-      MemberName: LineRenderer1
-    - TypeName: UnityEngine.LineRenderer
-      PathToRoot: LineRenderer2
-      MemberName: LineRenderer2
-    - TypeName: StarScavenger.ProjectileController
-      PathToRoot: Projectile
-      MemberName: Projectile
-    ScriptsFolder: Assets/Scripts/Game/Character
-    ClassName: Player
+    - TypeName: UnityEngine.CircleCollider2D
+      PathToRoot: HitHurtBox
+      MemberName: HitHurtBox
+    - TypeName: CircleCollider2D
+      PathToRoot: GravityArea
+      MemberName: GravityArea
+    - TypeName: CircleCollider2D
+      PathToRoot: HoldFireArea
+      MemberName: HoldFireArea
+    - TypeName: CircleCollider2D
+      PathToRoot: DefenseArea
+      MemberName: DefenseArea
+    - TypeName: UnityEngine.Transform
+      PathToRoot: DefenseImage
+      MemberName: DefenseImage
+    ScriptsFolder: Assets/Scripts/Game/Space/Planet
+    ClassName: Planet
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class Player : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class Planet : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:49476812-4aa7-4f9d-b946-970d7cacc7f6\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class Player\r\n\t{\r\n\r\n\t\tpublic
-      StarScavenger.HitHurtBox HurtBox;\r\n\r\n\t\tpublic UnityEngine.LineRenderer
-      LineRenderer1;\r\n\r\n\t\tpublic UnityEngine.LineRenderer LineRenderer2;\r\n\r\n\t\tpublic
-      StarScavenger.ProjectileController Projectile;\r\n\r\n\t\tpublic UnityEngine.Rigidbody2D
-      SelfRigidbody2D;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:95f1723e-5f2f-4f69-9b50-bdeab644dc92\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class Planet\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.CircleCollider2D HitHurtBox;\r\n\r\n\t\tpublic CircleCollider2D
+      GravityArea;\r\n\r\n\t\tpublic CircleCollider2D HoldFireArea;\r\n\r\n\t\tpublic
+      CircleCollider2D DefenseArea;\r\n\r\n\t\tpublic UnityEngine.Transform DefenseImage;\r\n\r\n\t}\r\n}\r\n"

@@ -1,4 +1,4 @@
-// Generate Id:ee0e6800-d9f5-402d-a974-4ee621ccbf61
+// Generate Id:95f1723e-5f2f-4f69-9b50-bdeab644dc92
 using UnityEngine;
 
 namespace StarScavenger
@@ -9,6 +9,12 @@ namespace StarScavenger
 		public UnityEngine.CircleCollider2D HitHurtBox;
 
 		public CircleCollider2D GravityArea;
+
+		public CircleCollider2D HoldFireArea;
+
+		public CircleCollider2D DefenseArea;
+
+		public UnityEngine.Transform DefenseImage;
 
 	}
 }
