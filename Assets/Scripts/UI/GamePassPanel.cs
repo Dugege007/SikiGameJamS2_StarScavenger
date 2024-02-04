@@ -30,6 +30,14 @@ namespace StarScavenger
                 CloseSelf();
                 SceneManager.LoadScene("Game");
             });
+
+            // 用时
+            TimeCountText.text = "用时 " + Global.EndTime.Value;
+
+            // 星球相关
+            PlanetCountText.text = Global.DiscoveredPlanetCount.Value + "/" + Global.MaxPlanet.Value;
+
+            PlanetBestCountText.text = Global.ArrivedPlanetCount.Value + "/" + Global.MaxPlanet.Value;
         }
 
         protected override void OnOpen(IUIData uiData = null)

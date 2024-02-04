@@ -1,5 +1,6 @@
 ﻿using QFramework;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace StarScavenger
 {
@@ -23,13 +24,14 @@ namespace StarScavenger
         // 时间
         public static BindableProperty<float> CurrentSeconds = new(0);
         public static BindableProperty<bool> IsGamePause = new(false);
+        public static BindableProperty<string> EndTime = new("00:00");
 
         // 基本数据
         public static BindableProperty<int> HP = new(3);
         public static BindableProperty<bool> IsReducingHP = new(false);
         public static BindableProperty<int> Shield = new(0);
-        public static BindableProperty<int> Fuel = new(150);
-        public static BindableProperty<int> MaxFuel = new(150);
+        public static BindableProperty<int> Fuel = new(100);
+        public static BindableProperty<int> MaxFuel = new(100);
         public static BindableProperty<int> FuelConsumpt = new(1);
         public static BindableProperty<float> FuelAutoConsumptTime = new(3f);
         public static BindableProperty<int> Coin = new(0);
@@ -71,14 +73,20 @@ namespace StarScavenger
         [RuntimeInitializeOnLoadMethod]
         public static void AutoInit()
         {
+            // 开始时加载一次资源
+            ResKit.Init();
             // 设置 UI
             UIKit.Root.SetResolution(1920, 1080, 0.5f);
+
+            // 主动初始化
+            IArchitecture _ = Interface;
         }
 
         public static void ResetData()
         {
             CurrentSeconds.Value = 0;
             IsGamePause.Value = false;
+            EndTime.Value = "00:00";
 
             HP.Value = 3;
             IsReducingHP.Value = false;
@@ -93,7 +101,7 @@ namespace StarScavenger
             PropulsiveForceValue.Value = 1f;
             RotateSpeed.Value = 0.5f;
             CurrentSpeed.Value = 1f;
-            MaxSpeed.Value = 5f;
+            MaxSpeed.Value = 10f;
 
             ProjectileSpeed.Value = 10f;
             AttackTimes.Value = 0;

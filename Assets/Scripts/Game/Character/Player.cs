@@ -46,6 +46,7 @@ namespace StarScavenger
                     if (hitBox.Owner.CompareTag("Asteroid"))
                     {
                         Global.HP.Value--;
+                        GamePanel.Default.DialogShow("失衡，注意调整方向");
                     }
                     if (hitBox.Owner.CompareTag("Planet"))
                     {
@@ -82,6 +83,7 @@ namespace StarScavenger
                 //TODO 失败音效
                 gameObject.DestroySelfGracefully();
                 UIKit.OpenPanel<GameOverPanel>();
+                Global.EndTime.Value = GamePanel.Default.TimeText.text;
                 return;
             }
 

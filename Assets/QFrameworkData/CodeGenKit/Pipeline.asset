@@ -19,29 +19,15 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: Rock
-      MemberName: Rock
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: Coins
-      MemberName: Coins
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: Refuel
-      MemberName: Refuel
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: Explosion
-      MemberName: Explosion
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: HeartBeat
-      MemberName: HeartBeat
-    ScriptsFolder: Assets/Scripts/Audio
-    ClassName: SFXManager
+    - TypeName: UnityEngine.ParticleSystem
+      PathToRoot: StarsParticle
+      MemberName: StarsParticle
+    ScriptsFolder: Assets/Scripts/Game/FX
+    ClassName: StarsParticleController
     Namespace: StarScavenger
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace StarScavenger\r\n{\r\n\tpublic
-      partial class SFXManager : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class StarsParticleController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:025bd667-29c4-48fa-ba5a-1731e038d31c\r\nusing UnityEngine;\r\n\r\nnamespace
-      StarScavenger\r\n{\r\n\tpublic partial class SFXManager\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.AudioSource Rock;\r\n\r\n\t\tpublic UnityEngine.AudioSource Coins;\r\n\r\n\t\tpublic
-      UnityEngine.AudioSource Refuel;\r\n\r\n\t\tpublic UnityEngine.AudioSource Explosion;\r\n\r\n\t\tpublic
-      UnityEngine.AudioSource HeartBeat;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:67a67086-c47d-49c9-82dc-3f413e97ce9f\r\nusing UnityEngine;\r\n\r\nnamespace
+      StarScavenger\r\n{\r\n\tpublic partial class StarsParticleController\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.ParticleSystem StarsParticle;\r\n\r\n\t}\r\n}\r\n"

@@ -5,13 +5,21 @@ using QFramework;
 
 namespace StarScavenger
 {
-	// Generate Id:d3a28448-8bf1-4647-8a35-5a73179448b8
+	// Generate Id:444f252d-9482-41e3-adf1-356ea7879fa0
 	public partial class GameOverPanel
 	{
 		public const string Name = "GameOverPanel";
 		
 		[SerializeField]
 		public UnityEngine.UI.Text GameOverText;
+		[SerializeField]
+		public UnityEngine.UI.Image PlanetCount;
+		[SerializeField]
+		public UnityEngine.UI.Text PlanetCountText;
+		[SerializeField]
+		public UnityEngine.UI.Image PlanetBestCount;
+		[SerializeField]
+		public UnityEngine.UI.Text PlanetBestCountText;
 		[SerializeField]
 		public UnityEngine.UI.Button BtnRestart;
 		[SerializeField]
@@ -22,6 +30,10 @@ namespace StarScavenger
 		protected override void ClearUIComponents()
 		{
 			GameOverText = null;
+			PlanetCount = null;
+			PlanetCountText = null;
+			PlanetBestCount = null;
+			PlanetBestCountText = null;
 			BtnRestart = null;
 			BtnBackToMenu = null;
 			

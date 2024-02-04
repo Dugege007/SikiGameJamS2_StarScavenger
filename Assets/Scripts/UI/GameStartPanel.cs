@@ -17,8 +17,9 @@ namespace StarScavenger
 
             BtnStartGame.onClick.AddListener(() =>
             {
-                CloseSelf();
                 Global.ResetData();
+
+                CloseSelf();
                 SceneManager.LoadScene("Game");
             });
 

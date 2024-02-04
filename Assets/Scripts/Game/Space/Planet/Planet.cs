@@ -122,6 +122,7 @@ namespace StarScavenger
                             player.CanAttack = false;
                             player.CanMove = false;
                             Global.CanGenerate.Value = false;
+                            Global.EndTime.Value = GamePanel.Default.TimeText.text;
                             UIKit.OpenPanel<GamePassPanel>();
                         }
                     }
@@ -143,8 +144,11 @@ namespace StarScavenger
                         player.CanAttack = false;
                         // 提示
                         GamePanel.Default.DescriptionShow("开启路径预测\n请勿撞向星球");
-                        Global.DiscoveredPlanetCount.Value++;
-                        IsDiscover = true;
+                        if (!IsDiscover)
+                        {
+                            Global.DiscoveredPlanetCount.Value++;
+                            IsDiscover = true;
+                        }
 
                         // 关闭生成垃圾
                         Global.CanGenerate.Value = false;
@@ -190,9 +194,12 @@ namespace StarScavenger
                         {
                             //TODO 获得成就
                             GamePanel.Default.DialogShow("要晕了~");
-                            GamePanel.Default.DescriptionShow("已到达！");
-                            Global.ArrivedPlanetCount.Value++;
-                            IsArrived = true;
+                            if (!IsArrived)
+                            {
+                                GamePanel.Default.DescriptionShow("已到达！");
+                                Global.ArrivedPlanetCount.Value++;
+                                IsArrived = true;
+                            }
                             stayTime = 0;
                         }
                     }

@@ -175,7 +175,7 @@ namespace StarScavenger
                 else if (hp - lastHP < 0)
                 {
                     RemoveHPAndShield(HPHolder, -(hp - lastHP));
-                    DialogShow("疼！");
+                    //DialogShow("疼！");
                 }
 
                 lastHP = hp;
@@ -248,8 +248,8 @@ namespace StarScavenger
                 if (attackTimes == 10)
                     DialogShow("燃料即是弹药");
 
-                if (attackTimes > 0 && attackTimes % 30 == 0)
-                    DialogShow("燃料即是弹药");
+                if (attackTimes > 0 && attackTimes % 20 == 0)
+                    DialogShow("非必要，不开火");
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 

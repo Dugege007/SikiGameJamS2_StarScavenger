@@ -5,6 +5,11 @@ namespace StarScavenger
 {
     public partial class GameUIController : ViewController
     {
+        private void Awake()
+        {
+            Global.ResetData();
+        }
+
         private void Start()
         {
             UIKit.OpenPanel<GamePanel>();
