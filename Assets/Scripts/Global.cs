@@ -44,6 +44,7 @@ namespace StarScavenger
 
         // 武器数据
         public static BindableProperty<float> ProjectileSpeed = new(10f);
+        public static BindableProperty<int> AttackTimes = new(0);
 
         // 能力数据
         // 预测路径点数
@@ -95,6 +96,7 @@ namespace StarScavenger
             MaxSpeed.Value = 5f;
 
             ProjectileSpeed.Value = 10f;
+            AttackTimes.Value = 0;
 
             PathResolution.Value = 20;
             PathPredictTime.Value = 2f;

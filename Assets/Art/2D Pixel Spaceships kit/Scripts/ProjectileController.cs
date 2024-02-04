@@ -44,12 +44,16 @@ namespace StarScavenger
                     {
                         int randomNum = Random.Range(Global.MinCoinGet.Value, Global.MaxCoinGet.Value);
                         Global.Coin.Value += randomNum;
+
+                        SFXManager.Default.Coins.Play();
                         FloatingTextController.Play("金币+" + randomNum, TextType.Coin);
                     }
                     else if (hitHurtBox.Owner.GetComponent<Asteroid>().AsteroidType == AsteroidType.Fuel)
                     {
                         int randomNum = Random.Range(Global.MinFuelGet.Value, Global.MaxFuelGet.Value);
                         Global.Fuel.Value += randomNum;
+
+                        SFXManager.Default.Refuel.Play();
                         FloatingTextController.Play("燃料+" + randomNum, TextType.Fuel);
                     }
 

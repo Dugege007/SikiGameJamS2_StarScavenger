@@ -14,8 +14,8 @@ namespace StarScavenger
         private float mFCTime = 0;
         private float mAutoFCTime = 0;
         private float mReduceHPTime = 0;
+        private float mAttackTime = 0;
 
-        private float mCurrentMoveSpeed;
         private bool mIsTurning = false;
 
         private Vector2 mGravity = Vector2.zero;
@@ -53,7 +53,8 @@ namespace StarScavenger
                     }
 
                     Debug.Log("CurrentHP: " + Global.HP.Value);
-                    //TODO 播放碰撞音效
+                    // 播放碰撞音效
+                    SFXManager.Default.Explosion.Play();
                 }
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
@@ -61,6 +62,11 @@ namespace StarScavenger
             Global.IsReducingHP.RegisterWithInitValue(isReducingHP =>
             {
                 mReduceHPTime = 0;
+                // 心跳音效
+                if (isReducingHP)
+                    SFXManager.Default.HeartBeat.Play();
+                else
+                    SFXManager.Default.HeartBeat.Stop();
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
@@ -69,10 +75,10 @@ namespace StarScavenger
         {
             mFCTime += Time.deltaTime;
             mAutoFCTime += Time.deltaTime;
+            mAttackTime += Time.deltaTime;
 
             if (Global.HP.Value <= 0)
             {
-                //TODO 爆炸特效
                 //TODO 失败音效
                 gameObject.DestroySelfGracefully();
                 UIKit.OpenPanel<GameOverPanel>();
@@ -111,23 +117,31 @@ namespace StarScavenger
                 mAutoFCTime = 0;
             }
 
-            if (CanAttack)
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Input.GetMouseButton(0))
             {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (Input.GetMouseButtonDown(0))
+                if (CanAttack && mAttackTime > 0.5f)
                 {
+                    mAttackTime = 0;
                     Global.Fuel.Value--;
+                    Global.AttackTimes.Value++;
+                    SFXManager.Default.Rock.Play();
 
                     Projectile.Instantiate()
                         .Position(Projectile.transform.position)
                         .Self(self =>
                         {
-                            self.InitVelocity  = SelfRigidbody2D.velocity;
+                            self.InitVelocity = SelfRigidbody2D.velocity;
                             Vector2 dir = (mousePos - self.transform.position).normalized;
                             self.gameObject.transform.up = dir;
                             self.Owner = this.gameObject;
                         })
                         .Show();
+                }
+                else if(CanAttack == false && mAttackTime > 1f)
+                {
+                    mAttackTime = 0;
+                    GamePanel.Default.DialogShow("暂时无法攻击");
                 }
             }
         }
@@ -233,8 +247,6 @@ namespace StarScavenger
 
                 // 使用RK4方法更新预测路径
                 UpdatePathWithRK4(planet, transform.position, SelfRigidbody2D.velocity);
-
-                //Debug.Log("重力方向：" + gravityDirection.normalized + "\n" + "重力大小：" + mGravity);
             }
             else
             {

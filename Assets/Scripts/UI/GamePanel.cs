@@ -243,6 +243,16 @@ namespace StarScavenger
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
 
+            Global.AttackTimes.RegisterWithInitValue(attackTimes =>
+            {
+                if (attackTimes == 10)
+                    DialogShow("燃料即是弹药");
+
+                if (attackTimes > 0 && attackTimes % 30 == 0)
+                    DialogShow("燃料即是弹药");
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+
             // 金币相关
             Global.Coin.RegisterWithInitValue(coin =>
             {
