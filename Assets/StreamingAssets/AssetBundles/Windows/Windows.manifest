@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2550182002
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: gamepanel_prefab
+      Dependencies: {}
+    Info_1:
+      Name: gameoverpanel_prefab
+      Dependencies: {}
+    Info_2:
+      Name: gamestartpanel_prefab
+      Dependencies: {}
+    Info_3:
+      Name: gamepasspanel_prefab
+      Dependencies: {}
