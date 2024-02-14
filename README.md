@@ -1,2 +1,2 @@
 # SikiGameJamS2_StarScavenger
- SikiGameJamS2 Siki学院GameJam第2季
+探索者号（原名：星际拾荒者）（SikiGameJamS2参赛作品）
